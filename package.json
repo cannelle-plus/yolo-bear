@@ -1,0 +1,48 @@
+{
+  "name": "yolo-bear",
+  "description": "bear 2 bear site web client",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.6.6",
+    "cookie-parser": "^1.3.2",
+    "dot": "^1.0.2",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.6",
+    "express-session": "^1.7.6",
+    "method-override": "^2.1.3",
+    "morgan": "^1.2.3",
+    "passport": "^0.2.1",
+    "passport-facebook": "^1.0.3",
+    "passport-google": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.1.1",
+    "sqlite3": "^2.2.7"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "karma start"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.0.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-parallel": "^0.3.1",
+    "grunt-simple-mocha": "^0.4.0",
+    "grunt-watchify": "^0.1.0",
+    "karma": "^0.12.23",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.9",
+    "karma-requirejs": "^0.2.2",
+    "load-grunt-tasks": "^0.6.0",
+    "mocha": "^1.21.4",
+    "requirejs": "^2.1.15"
+  }
+}
