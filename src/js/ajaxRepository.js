@@ -1,9 +1,16 @@
 var ajaxRepository = function() {
 	var _gamesList = function(){
-		return $.ajax({
+		var deferred = $.Deferred();
+
+		$.ajax({
     	    type: "GET",
       		url: "/gamesList",
-		});
+		}).done(function(data) {
+			deferred.resolve(JSON.parse(data));
+		})
+		  .fail(deferred.reject);
+
+		return deferred.promise();
 	};
 
 	var _joinGame = function(gameId) {
@@ -51,4 +58,4 @@ var ajaxRepository = function() {
 	};
 };
 
-module.exports = fakeAjaxRepository;
+module.exports = ajaxRepository;

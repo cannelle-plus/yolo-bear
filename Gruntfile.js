@@ -45,10 +45,14 @@ module.exports = function(grunt) {
           files: ['src/css/**/*'],
           tasks: ['devcss']
         },
+        devimages: {
+          files: ['src/images/**/*'],
+          tasks: ['devimages']
+        },
         wwwroot : {
           files: ['www-root/**/*'],
           options : {
-            livereload :true 
+            livereload :1337
           }
         },
       },
@@ -57,7 +61,8 @@ module.exports = function(grunt) {
         all : ['www-root'],
         devhtml : ['www-root/*.html'],
         devjs : ['www-root/js/yolo-bear.js'],
-        devcss : ['www-root/css/*.*']
+        devcss : ['www-root/css/*.*'],
+        devimages : ['www-root/images/*.*']
       },
 
       copy: {
@@ -80,6 +85,12 @@ module.exports = function(grunt) {
             {expand: true, cwd:'src/css/', src: ['*.*'], dest: 'www-root/css'}
           ]
        },
+       devimages: {
+          files: [
+            // includes files within path and its sub-directories
+            {expand: true, cwd:'src/images/', src: ['*.*'], dest: 'www-root/images'}
+          ]
+       },
       },
       simplemocha: {
           options: {
@@ -93,9 +104,9 @@ module.exports = function(grunt) {
       },
 
       browserify: {
-          all : { 
+          yoloBear : { 
             files : {
-              'www-root/js/yolo-bear.js' :['src/js/main.js']
+              'www-root/js/yolo-bear.js' :['src/js/yoloBear.js']
             },
             options : {
               watch : true
@@ -131,6 +142,10 @@ module.exports = function(grunt) {
             },
             {
             grunt:true,
+            args : ['watch:devimages']
+            },
+            {
+            grunt:true,
             args : ['watch:wwwroot']
             }
           ]
@@ -156,6 +171,7 @@ module.exports = function(grunt) {
     grunt.registerTask('devjs', ['jshint', 'simplemocha', 'clean:devjs','browserify']);
     grunt.registerTask('devhtml', ['clean:devhtml', 'copy:devhtml']);
     grunt.registerTask('devcss', ['clean:devcss','copy:devcss']);
+    grunt.registerTask('devimages', ['clean:devimages','copy:devimages']);
    
 };
 
