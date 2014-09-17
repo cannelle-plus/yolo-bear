@@ -17,8 +17,16 @@ module.exports = function(grunt) {
         }
       },
 
-
-      jshint: {
+			compass: {
+				dist: {
+					options: {
+						sassDir: 'src/sass',
+						cssDir: 'src/css'
+					}
+				}
+			},
+      
+			jshint: {
         // define the files to lint
         files: ['gruntfile.js', 'src/js/**/*.js', 'specs/**/*.js'],
         // configure JSHint (documented at http://www.jshint.com/docs/)
@@ -55,6 +63,12 @@ module.exports = function(grunt) {
             livereload :1337
           }
         },
+				compass: {
+					files: [
+						'src/sass/**/*.scss'
+					],
+					tasks: ['compass']
+				},
       },
 
       clean : {
@@ -136,11 +150,15 @@ module.exports = function(grunt) {
             grunt:true,
             args : ['watch:devhtml']
             },
+						{
+						grunt: true,
+						args: ['watch:compass']
+						}, 
             {
             grunt:true,
             args : ['watch:devcss']
-            },
-            {
+            }, 
+						{
             grunt:true,
             args : ['watch:devimages']
             },
@@ -164,9 +182,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-parallel'); 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-browserify');
+		grunt.loadNpmTasks('grunt-contrib-compass');
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean', 'browserify', 'copy', "connect", 'parallel:web']);
+    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean', 'browserify','compass', 'copy', "connect", 'parallel:web']);
 
     grunt.registerTask('devjs', ['jshint', 'simplemocha', 'clean:devjs','browserify']);
     grunt.registerTask('devhtml', ['clean:devhtml', 'copy:devhtml']);
