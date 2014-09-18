@@ -1,43 +1,86 @@
+var Games = require('./model/games');
+var Game = require('./model/game');
+
 var gamesViewModel = function(repository){
 
 	if (!repository)
 		throw "repository is not instanciated";
 
 	var _repository= repository;
-
+	var _games = new Games();
+	
 	_repository.gamesList().done(function(data)
 	{
+		for(var i=0 ; i<data.gamesList.length;i++)
+		{
+			var d = data.gamesList[i];
+			var g = new Game(d.gameId,
+							d.version,
+							d.gameName,
+							d.gameDate,
+							d.gameLocation,
+							d.players,
+							d.nbPlayers,
+							d.maxPlayers);
+
+			_games.add(g);
+			// see with Julien to add templatng js here
+		}
+		
 		var template = doT.template(document.getElementById('gamesListTemplate').innerHTML);
 		var htmlRendered =template(data);
 		$(document.getElementById('gamesListContainer')).html(htmlRendered); 
+
+		// use event bubling instead 
 		bindControls();
 	});  
+
+	var isGameForEvent = function(evt) {
+		return function(g) { 
+			if (!g) return false;
+			if (!g.hasId) return false;
+			return g.hasId(evt.target.attributes.data.value); 
+		};
+	};
 
 
 	function bindControls()
 	{
 		$('.actionJoin').on('click',function(e){
-			var gameId = e.target.attributes.data.value;
-			_repository.joinGame(gameId)
-			          .done(function(data)
+			
+			var game = _games.findFirstOrDefault(isGameForEvent(e));
+
+			if (!game) throw 'game not found';
+
+			game.joinGame(_repository.joinGame)
+			    .done(function(data)
 			{
 				$(e.target).closest('.action').hide();
 			});
+
 		});
 
 		$('.actionAbandonGame').on('click',function(e){
-			var gameId = e.target.attributes.data.value;
-			_repository.abandonGame(gameId)
-					  .done(function(data)
+			
+			var game = _games.findFirstOrDefault(isGameForEvent(e));
+
+			if (!game) throw 'game not found';
+
+			game.abandonGame(_repository.abandonGame)
+				.done(function(data)
 			{
 				$(e.target).closest('.action').hide();
 			});
 		});
 
 		$('.actionCancelGame').on('click',function(e){
-			var gameId = e.target.attributes.data.value;
-			_repository.cancelGame(gameId)
-					  .done(function(data)
+
+			var game = _games.findFirstOrDefault(isGameForEvent(e));
+
+			if (!game) throw 'game not found';
+
+			game.cancelGame(_repository.cancelGame)
+			    .done(function(data)
 			{
 				$(e.target).closest('.action').hide();
 			});
@@ -47,41 +90,22 @@ var gamesViewModel = function(repository){
 		$btnActionCreateGame.on('click',function(e){
 
 			doNothing(e);
+
 			var gameDate = null;
 			var gameName = $(document.getElementById('gameName')).val();
 			var gameLocation = $(document.getElementById('gameLocation')).val();
 			var date = $(document.getElementById('gameDate')).val();
 			var hour = $(document.getElementById('gameHour')).val();
 			var gameNbPlayers = document.getElementById('nbPlayersRequired').value;
-			var error = null;
-
-			if(date.length===0 || hour.length===0)
-				error = "Date cannot be null !";
-
-
-			if(gameName.length===0)
-				error = "Game's name cannot be null !";
-
-			if(gameLocation.length===0)
-				error = "Game's location cannot be null !";
-
-			if(isNaN(gameNbPlayers))
-				error = "Game's players cannot be null !";
-
-			if(error)
-			{
-				$(document.getElementById('textError')).text(error);
-				return;
-			}
-
-			gameDate= date +' '+hour;
 
 			_repository.createGame(gameName,gameLocation,gameDate,gameNbPlayers)
-					  .done(function(data)
-			{
-				console.log('Match créé');
-				//TODO YRE doit retourner le nouveau match, le match doit être insérer dans la page
-			});
+				  .done(function(data) {
+						console.log('Match créé');
+						//TODO YRE doit retourner le nouveau match, le match doit être insérer dans la page
+					})
+				  .fail(function(error){
+				  	$(document.getElementById('textError')).text(error);
+				  });
 
 		}); 
 	}

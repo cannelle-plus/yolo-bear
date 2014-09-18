@@ -1,3 +1,5 @@
+
+
 var ajaxRepository = function() {
 	var _gamesList = function(){
 		var deferred = $.Deferred();
@@ -13,39 +15,35 @@ var ajaxRepository = function() {
 		return deferred.promise();
 	};
 
-	var _joinGame = function(gameId) {
+	var _joinGame = function(o) {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/joinGame",
-	      data: {game:gameId}
+	      data: o
 		});
 	};
 
-	var _abandonGame = function	(gameId) {
+	var _abandonGame = function	(o) {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/abandonGame",
-	      data: {game:gameId}
+	      data: o
 		});
 	};
 
-	var _cancelGame = function(gameId) {
+	var _cancelGame = function(o) {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/cancelGame",
-	      data: {game:gameId}
+	      data: o
 		});
 	};
 
-	var _createGame = function(gameName,gameLocation,gameDate,gameNbPlayers){
+	var _createGame = function(o){
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/createGame",
-	      data: {gameName:gameName, 
-	      		gameLocation: gameLocation, 
-	      		gameDate : gameDate,
-	      		nbPlayersRequired : gameNbPlayers
-	      	}
+	      data: o
 		});
 	};
 

@@ -3,6 +3,17 @@ yolo-bear
 
 Site web statique
 
+
+Install ruby
+Install sass
+follow the instructions of this page to do so : http://compass-style.org/install/
+
+gem update --system
+gem install compass
+
+Add the path to compass.bat in your environment variables  ie:pathToRuby/bin
+
+
 Json Contracts
 ==============
 

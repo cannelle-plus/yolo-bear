@@ -22,39 +22,44 @@ var fakeAjaxRepository = function() {
 	};
 
 	var _joinGame = function(gameId) {
-		return $.ajax({
-	      type: "POST",
-	      url: "/game/joinGame",
-	      data: {game:gameId}
-		});
+		
+		var deferred = $.Deferred();
+
+		setTimeout(function(){
+			deferred.resolve("OK");
+		}, 50);
+		
+		return deferred.promise();
 	};
 
 	var _abandonGame = function	(gameId) {
-		return $.ajax({
-	      type: "POST",
-	      url: "/game/abandonGame",
-	      data: {game:gameId}
-		});
+		var deferred = $.Deferred();
+
+		setTimeout(function(){
+			deferred.resolve("OK");
+		}, 50);
+		
+		return deferred.promise();
 	};
 
 	var _cancelGame = function(gameId) {
-		return $.ajax({
-	      type: "POST",
-	      url: "/game/cancelGame",
-	      data: {game:gameId}
-		});
+		var deferred = $.Deferred();
+
+		setTimeout(function(){
+			deferred.resolve("OK");
+		}, 50);
+		
+		return deferred.promise();
 	};
 
 	var _createGame = function(gameName,gameLocation,gameDate,gameNbPlayers){
-		return $.ajax({
-	      type: "POST",
-	      url: "/game/createGame",
-	      data: {gameName:gameName, 
-	      		gameLocation: gameLocation, 
-	      		gameDate : gameDate,
-	      		nbPlayersRequired : gameNbPlayers
-	      	}
-		});
+		var deferred = $.Deferred();
+
+		setTimeout(function(){
+			deferred.resolve("OK");
+		}, 50);
+		
+		return deferred.promise();
 	};
 
 	return {
