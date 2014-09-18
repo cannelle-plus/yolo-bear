@@ -1,6 +1,3 @@
-
-
-
 function doNothing(event){
 	event.preventDefault();
 	event.stopPropagation();
@@ -14,8 +11,6 @@ $(document).ready(function(){
 	var ajaxRepository = require("./ajaxRepository");
 	
 	var repository = new fakeRepository();
-	var yolo = new app(repository);
-	
+	var yolo = new app(repository);	
   
 });
-
