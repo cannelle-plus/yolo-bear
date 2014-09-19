@@ -7,6 +7,7 @@ var ajaxRepository = function() {
 		$.ajax({
     	    type: "GET",
       		url: "/gamesList",
+      		contentType: 'application/json'
 		}).done(function(data) {
 			deferred.resolve(JSON.parse(data));
 		})
@@ -19,7 +20,8 @@ var ajaxRepository = function() {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/joinGame",
-	      data: o
+	      data: JSON.stringify(o),
+	      contentType: 'application/json'
 		});
 	};
 
@@ -27,7 +29,8 @@ var ajaxRepository = function() {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/abandonGame",
-	      data: o
+	      data: JSON.stringify(o),
+	      contentType: 'application/json'
 		});
 	};
 
@@ -35,7 +38,8 @@ var ajaxRepository = function() {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/cancelGame",
-	      data: o
+	      data: JSON.stringify(o),
+	      contentType: 'application/json'
 		});
 	};
 
@@ -43,7 +47,8 @@ var ajaxRepository = function() {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/createGame",
-	      data: o
+	      data: JSON.stringify(o),
+	      contentType: 'application/json'
 		});
 	};
 

@@ -13,27 +13,27 @@ var game = function(id, version, name, ownerId, date, location, players, nbPlaye
 	var _nbPlayers = nbPlayers;
 	var _maxPlayers = maxPlayers;
 
-	var _joinGame = function(ajaxCall) {
-		return ajaxCall({
-	      	id:_id,
-	      	version : _version
+	var _joinGame = function(ajaxRepository) {
+		return ajaxRepository.joinGame({
+	      	"id":_id,
+	      	"version" : _version
       	});
 	};
 
-	var _abandonGame = function	(ajaxCall) {
-		return ajaxCall({
-	      	id:_id,
-	      	version : _version
+	var _abandonGame = function	(ajaxRepository) {
+		return ajaxRepository.abandonGame({
+	      	"id":_id,
+	      	"version" : _version
       	});
 	};
 
-	var _cancelGame = function(ajaxCall) {
+	var _cancelGame = function(ajaxRepository) {
 
 		//todo check that the userid is the one who owns the game
 
-		return ajaxCall({
-	      	id:_id,
-	      	version : _version
+		return ajaxRepository.cancelGame({
+	      	"id":_id,
+	      	"version" : _version
 	      });
 	};
 
@@ -64,4 +64,4 @@ var game = function(id, version, name, ownerId, date, location, players, nbPlaye
 
 };
 
-module.exports = game;
+module.exports = game; 

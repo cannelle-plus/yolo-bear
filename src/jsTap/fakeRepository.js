@@ -3,6 +3,7 @@ var fakeAjaxRepository = function() {
 	var _gamesList = function(){
 		var gamesList= { gamesList : [{
 				gameId :1,
+				version : 1,
 				gameName : "test",
 				gameDate : "10/01/2014 10:00",
 				gameLocation : "playSoccer",

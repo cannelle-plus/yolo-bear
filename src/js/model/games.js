@@ -1,17 +1,17 @@
 var Game = require('../model/game');
 
-var games = function(){
+var games = function(ajaxRepository){
 
+	if (!ajaxRepository) throw 'repository is undefined for games';
+
+	var _ajaxRepository = ajaxRepository;
 	var _games= {};
 
-	var _contains = function(game)
-	{
-		return game.existsIn(_games);
-	};
 
 	var _add = function(game)
 	{
-		game.addTo(_games);
+		if (!game.existsIn(_games))
+			game.addTo(_games);	
 	};
 
 	var _findFirstOrDefault =function(predicate)
@@ -20,7 +20,49 @@ var games = function(){
 		return null;
 	};
 
-	var _createGame = function(ajaxCall,gameName,gameLocation,date, hour,gameNbPlayers){
+	var _isGameForId = function(id) {
+		return function(g) { 
+			if (!g) return false;
+			if (!g.hasId) return false;
+			return g.hasId(id); 
+		};
+	};
+
+	var _joinGame = function(id) {
+		
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (!game) throw 'game not found';
+
+		// game to join is found , we therefore make the ajax call to perform the action
+		return game.joinGame(_ajaxRepository);
+
+	};
+
+	var _abandonGame = function(id) {
+		
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (!game) throw 'game not found';
+
+		// game to join is found , we therefore make the ajax call to perform the action
+		return game.abandonGame(_ajaxRepository);
+	};
+
+	var _cancelGame = function(id) {
+		
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (!game) throw 'game not found';
+
+		//todo add assert ownerid is the user doing this cancellation
+
+		// game to join is found , we therefore make the ajax call to perform the action
+		return game.cancelGameGame(_ajaxRepository);
+	};
+
+
+	var _createGame = function(gameName,gameLocation,date, hour,gameNbPlayers){
 
 		var error = null;
 
@@ -44,7 +86,7 @@ var games = function(){
 			return deferred.promise();
 		}
 		
-		return ajaxCall({
+		return _ajaxRepository.createGame({
 				gameName:gameName, 
 	      		gameLocation: gameLocation, 
 	      		gameDate : gameDate,
@@ -53,10 +95,11 @@ var games = function(){
 	};
 
 	return {
-		contains : _contains,
-		findFirstOrDefault : _findFirstOrDefault,
 		add : _add,
-		createGame : _createGame
+		createGame : _createGame,
+		joinGame : _joinGame,
+		abandonGame :_abandonGame,
+		cancelGame : _cancelGame
 	};
 };
 
