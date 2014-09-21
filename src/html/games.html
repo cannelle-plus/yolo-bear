@@ -48,16 +48,16 @@
 				<li>
 					<p class="avatar"> - </p>
 					<p class="infos">
-						<strong>{{=game.gameName}}</strong>
-						{{=game.gameLocation}}<br />
-						{{= new Date(game.gameDate).toLocaleString("en-GB")}}
+						<strong>{{=game.name}}</strong>
+						{{=game.location}}<br />
+						{{= new Date(game.startDate).toLocaleString("en-GB")}}
 					</p>
 					<p class="number alert">{{= game.nbPlayers}}/{{= game.maxPlayers}}</p>
 					<a href="#" class="more" data-target="gameDetail">+</a><br/>
 					<div class="action">
-						<button type="button" class="actionJoin" data="{{=game.gameId}}">Join</button>
-						<button type="button" class="actionAbandonGame" data="{{=game.gameId}}">Adandon</button>
-						<button type="button" class="actionCancelGame" data="{{=game.gameId}}">Cancel</button>
+						<button type="button" class="actionJoin" data="{{=game.id}}">Join</button>
+						<button type="button" class="actionAbandonGame" data="{{=game.id}}">Adandon</button>
+						<button type="button" class="actionCancelGame" data="{{=game.id}}">Cancel</button>
 					</div>
 				</li>
 
@@ -102,19 +102,19 @@
 		</section>
 		<section id="createGame">
 			<h2 class="title">Create new game</h2>
-				<input type="text" id="gameName" name="name" placeholder="Name *">
+				<input type="text" id="gameName" name="name" value="test" placeholder="Name *">
 				<div class="semiField">
-					<input type="date" id="gameDate"><input type="text" id="gameHour">				
+					<input type="date" value="12/11/2014" id="gameDate"><input type="text" value="18:00" id="gameHour">	
 				</div>
 				<select id="gameLocation">
-					<option selected>Location</option>
-					<option>Playsoccer</option>
+					<option >Location</option>
+					<option selected>Playsoccer</option>
 					<option>Soccer 5</option>
 					<option>Event soccer</option>
 				</select>
 				<select id="nbPlayersRequired">
-					<option selected>Players required</option>
-					<option>4</option>
+					<option >Players required</option>
+					<option selected>4</option>
 					<option>6</option>
 					<option>8</option>
 					<option>10</option>

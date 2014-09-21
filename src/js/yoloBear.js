@@ -1,7 +1,7 @@
-function doNothing(event){
-	event.preventDefault();
-	event.stopPropagation();
-}
+// function doNothing(event){
+// 	event.preventDefault();
+// 	event.stopPropagation();
+// }
 
 $(document).ready(function(){
 

@@ -62,7 +62,7 @@ var games = function(ajaxRepository){
 	};
 
 
-	var _createGame = function(gameName,gameLocation,date, hour,gameNbPlayers){
+	var _createGame = function(gameName,gameLocation,date, hour, gameNbPlayers){
 
 		var error = null;
 
@@ -78,7 +78,7 @@ var games = function(ajaxRepository){
 		if(isNaN(gameNbPlayers))
 			error = "Game's players cannot be null !";
 
-		var gameDate= date +' '+hour;
+		var gameDate = date +' '+hour;
 
 		if (error) {
 			var deferred = $.Deferred();
@@ -87,11 +87,14 @@ var games = function(ajaxRepository){
 		}
 		
 		return _ajaxRepository.createGame({
-				gameName:gameName, 
-	      		gameLocation: gameLocation, 
-	      		gameDate : gameDate,
-	      		nbPlayersRequired : gameNbPlayers
+				name:gameName, 
+	      		location: gameLocation, 
+	      		startDate : gameDate,
+	      		nbPlayersRequired : gameNbPlayers 
 	    });
+
+	    //should we add the game as it is to the _games list and display it on the screen,
+	    // we could wait for the server just to get some further details if need is.
 	};
 
 	return {

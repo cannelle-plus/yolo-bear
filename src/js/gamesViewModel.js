@@ -14,12 +14,13 @@ var gamesViewModel = function(repository){
 		for(var i=0 ; i<data.gamesList.length;i++)
 		{
 			var d = data.gamesList[i];
-			var g = new Game(d.gameId,
+			var g = new Game(d.id,
 							d.version,
-							d.gameName,
+							d.name,
 							d.ownerId,
-							d.gameDate,
-							d.gameLocation,
+							d.ownerUserName,
+							d.startDate,
+							d.location,
 							d.players,
 							d.nbPlayers,
 							d.maxPlayers);
@@ -70,7 +71,8 @@ var gamesViewModel = function(repository){
 	var $btnActionCreateGame = $(document.getElementById('btnCreateGame'));
 	$btnActionCreateGame.on('click',function(e){
 
-		doNothing(e);
+		event.preventDefault();
+		event.stopPropagation();
 
 		var gameDate = null;
 		var gameName = $(document.getElementById('gameName')).val();
@@ -79,7 +81,7 @@ var gamesViewModel = function(repository){
 		var hour = $(document.getElementById('gameHour')).val();
 		var gameNbPlayers = document.getElementById('nbPlayersRequired').value;
 
-		_games.createGame(gameName,gameLocation,gameDate,gameNbPlayers)
+		_games.createGame(gameName,gameLocation,date, hour,gameNbPlayers)
 			  .done(function(data) {
 					console.log('Match créé');
 					//TODO YRE doit retourner le nouveau match, le match doit être insérer dans la page
