@@ -84,6 +84,7 @@ var gamesViewModel = function(repository){
 		_games.createGame(gameName,gameLocation,date, hour,gameNbPlayers)
 			  .done(function(data) {
 					console.log('Match créé');
+					$("#createGame").hide();
 					//TODO YRE doit retourner le nouveau match, le match doit être insérer dans la page
 				})
 			  .fail(function(error){
