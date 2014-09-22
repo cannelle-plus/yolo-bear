@@ -1,5 +1,60 @@
-$primary-color: #030;
+/* Font-Face */
+@font-face {
+    font-family: 'OpenSansExtrabold';
+    src: url('../fonts/opensans-extrabold.eot');
+    src: url('../fonts/opensans-extrabold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-extrabold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url('../fonts/opensans-light.eot');
+    src: url('../fonts/opensans-light.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+$font-stack-bold:    'OpenSansExtrabold', Helvetica, Arial, sans-serif;
+$font-stack-light:    'OpenSansLight', Helvetica, Arial, sans-serif;
 
-body {
-  background: $primary-color;
+body{background: url(../images/bg.jpg) 50% 50% no-repeat;background-size:cover;font-family:$font-stack-bold;}
+select,textarea,button,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],
+input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"]{font-family:$font-stack-bold;}
+header{
+	h1{font-size:1.5em;line-height:3;}
+	h1 a{text-decoration:none;}
+	h1 a:active,h1 a:focus,h1 a:hover{background:rgba(248,192,119,0.3);border-radius:3px;}
+}
+footer{
+	p{font:1.6em/1 $font-stack-light;margin:1.25em;}
+	a{text-decoration:none;background:url(../images/icoPlus.gif) 0 0 no-repeat;padding:0 0 0 1.6875em;display:block;}
+	a:active,a:focus,a:hover{background:rgba(248,192,119,0.3);border-radius:0.3em;}
+}
+.title{font:1.6em/1.25 $font-stack-light;margin:0 0 1.5em;}
+.overlay{font:1.2em/1.25 $font-stack-light;padding:12em 3em 0;}
+.overlay ul{margin:3em 0;}
+
+/* APP */
+.games{position:absolute;top:2em;left:2em;right:2em;bottom:5.6em;overflow:auto;}
+.games{ 
+	.infos{font:1em/1.5 $font-stack-light;}
+	.infos strong{display:block;font:1.2em/1.3 $font-stack-bold;}
+	.number{font:1.6em/1 $font-stack-light;}
+	.more a{display:inline-block;background:url(../images/icoAdd.png) 0 0 no-repeat;width:1em;height:1em;text-indent:100%;overflow:hidden;}
+	.more a:active,.more a:focus,.more a:hover{background-position:100% 0;}
+	.action{padding:0 2em;font-size:1.2em;}
+	button{padding:0;background:none;float:none;height:100%;font:1em/1 $font-stack-light;margin:0 0 0 1em;}
+}
+#gameDetail{
+	>ul>li+li{padding:0 0 0 12.5%;font:1.2em/1.25 $font-stack-light;}
+	strong{font-family:$font-stack-bold;}
+	.detailAction{border:0;margin:3em 0 1em;}
+}
+
+/* High res screens */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+body{background-image:url(../images/bg@2x.jpg);}
+.games .more a{background-image:url(../images/icoAdd@2x.png);background-size:2em 1em;}
+footer a{background-image:url(../images/icoPlus@2x.gif);background-size:1em 1em;}
 }

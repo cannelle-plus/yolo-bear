@@ -2,15 +2,30 @@ var fakeAjaxRepository = function() {
 	
 	var _gamesList = function(){
 		var gamesList= { gamesList : [{
-				gameId :1,
+				id :1,
 				version : 1,
-				gameName : "test",
-				gameDate : "10/01/2014 10:00",
-				gameLocation : "playSoccer",
+				name : "test",
+				ownerId : 1,
+				ownerUserName : "julien",
+				startDate : "10/01/2014 10:00",
+				location : "playSoccer",
 				players : "julien, yoann",
 				nbPlayers : 2,
 				maxPlayers : 8
-			}]
+			},
+			{
+				id :2,
+				version : 1,
+				name : "Joga Bonito",
+				ownerId : 1,
+				ownerUserName : "julien",
+				startDate : "10/01/2014 19:00",
+				location : "playSoccer",
+				players : "julien, yoann",
+				nbPlayers : 7,
+				maxPlayers : 8
+			}		
+			]
 		};
 
 		var deferred = $.Deferred();
