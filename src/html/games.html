@@ -7,7 +7,7 @@
 <html lang="fr"><!--<![endif]-->
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>{{title}}</title>
+	<title>{{Bear2Bear}}</title>
 	<meta name="description" content="" />
 	<meta name="author" content="Cannelle Plus">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,8 +19,8 @@
 </head>
 <body>
 	<header class="clearfix">
-		<p><a href="#" data-target="games">{{logo}}</a></p>
-		<h1><a href="#" data-modal="open">{{name}}</a></h1>
+		<p><a href="#" data-target="games"><img src="images/avatar@2x.png" alt="" width="50" height="50" /></a></p>
+		<h1><a href="#" data-modal="open">Bear2Bear</a></h1>
 	</header>
 	<div id="main">
 		<!--<section id="createAccount">
@@ -46,15 +46,16 @@
 			<script id="gamesListTemplate" type="text/x-dot-template">
 			{{~it.gamesList :game}} 
 				<li>
-					<p class="avatar"> - </p>
+					<p class="avatar"><img src="images/avatar@2x.png" alt="" width="25" height="25" /></p>
 					<p class="infos">
 						<strong>{{=game.name}}</strong>
 						{{=game.location}}<br />
 						{{= new Date(game.startDate).toLocaleString("en-GB")}}
 					</p>
-					<p class="number alert">{{= game.nbPlayers}}/{{= game.maxPlayers}}</p>
-					<a href="#" class="more" data-target="gameDetail">+</a><br/>
+					<p class="number alert info success">{{= game.nbPlayers}}/{{= game.maxPlayers}}</p>
+					<p class="more"><a href="#" data-target="gameDetail">+</a></p>
 					<div class="action">
+						<p>Voulez-vous ?</p>
 						<button type="button" class="actionJoin" data="{{=game.id}}">Join</button>
 						<button type="button" class="actionAbandonGame" data="{{=game.id}}">Adandon</button>
 						<button type="button" class="actionCancelGame" data="{{=game.id}}">Cancel</button>
@@ -74,7 +75,7 @@
 		<section id="gameDetail">
 			<ul class="games">
 				<li>
-					<p class="avatar">O</p>
+					<p class="avatar"><img src="images/avatar@2x.png" alt="" width="25" height="25" /></p>
 					<p class="infos">
 						<strong>Lorem ipsum dolor</strong>
 						Lorem ipsum dolor<br />
@@ -94,8 +95,8 @@
 						<li>...</li>
 					</ul>
 				</li>
+				<li class="detailAction"><a href="#">Quitter la partie</a></li>
 			</ul>
-			<p class="detailAction"><a href="#">Quitter la partie</a></p>
 			<footer class="clearfix">
 				<p><a href="#" data-target="createGame">Créer une nouvelle partie</a></p>
 			</footer>

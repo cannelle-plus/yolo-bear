@@ -1,4 +1,164 @@
-/* line 3, ../sass/template.scss */
+/* Font-Face */
+@font-face {
+  font-family: 'OpenSansExtrabold';
+  src: url("../fonts/opensans-extrabold.eot");
+  src: url("../fonts/opensans-extrabold.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-extrabold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSansLight';
+  src: url("../fonts/opensans-light.eot");
+  src: url("../fonts/opensans-light.eot?#iefix") format("embedded-opentype"), url("../fonts/opensans-light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 21, ../sass/template.scss */
 body {
-  background: #030;
+  background: url(../images/bg.jpg) 50% 50% no-repeat;
+  background-size: cover;
+  font-family: "OpenSansExtrabold", Helvetica, Arial, sans-serif;
+}
+
+/* line 22, ../sass/template.scss */
+select, textarea, button, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"],
+input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  font-family: "OpenSansExtrabold", Helvetica, Arial, sans-serif;
+}
+
+/* line 25, ../sass/template.scss */
+header h1 {
+  font-size: 1.5em;
+  line-height: 3;
+}
+/* line 26, ../sass/template.scss */
+header h1 a {
+  text-decoration: none;
+}
+/* line 27, ../sass/template.scss */
+header h1 a:active, header h1 a:focus, header h1 a:hover {
+  background: rgba(248, 192, 119, 0.3);
+  border-radius: 3px;
+}
+
+/* line 30, ../sass/template.scss */
+footer p {
+  font: 1.6em/1 "OpenSansLight", Helvetica, Arial, sans-serif;
+  margin: 1.25em;
+}
+/* line 31, ../sass/template.scss */
+footer a {
+  text-decoration: none;
+  background: url(../images/icoPlus.gif) 0 0 no-repeat;
+  padding: 0 0 0 1.6875em;
+  display: block;
+}
+/* line 32, ../sass/template.scss */
+footer a:active, footer a:focus, footer a:hover {
+  background: rgba(248, 192, 119, 0.3);
+  border-radius: 0.3em;
+}
+
+/* line 34, ../sass/template.scss */
+.title {
+  font: 1.6em/1.25 "OpenSansLight", Helvetica, Arial, sans-serif;
+  margin: 0 0 1.5em;
+}
+
+/* line 35, ../sass/template.scss */
+.overlay {
+  font: 1.2em/1.25 "OpenSansLight", Helvetica, Arial, sans-serif;
+  padding: 12em 3em 0;
+}
+
+/* line 36, ../sass/template.scss */
+.overlay ul {
+  margin: 3em 0;
+}
+
+/* APP */
+/* line 39, ../sass/template.scss */
+.games {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  right: 2em;
+  bottom: 5.6em;
+  overflow: auto;
+}
+
+/* line 41, ../sass/template.scss */
+.games .infos {
+  font: 1em/1.5 "OpenSansLight", Helvetica, Arial, sans-serif;
+}
+/* line 42, ../sass/template.scss */
+.games .infos strong {
+  display: block;
+  font: 1.2em/1.3 "OpenSansExtrabold", Helvetica, Arial, sans-serif;
+}
+/* line 43, ../sass/template.scss */
+.games .number {
+  font: 1.6em/1 "OpenSansLight", Helvetica, Arial, sans-serif;
+}
+/* line 44, ../sass/template.scss */
+.games .more a {
+  display: inline-block;
+  background: url(../images/icoAdd.png) 0 0 no-repeat;
+  width: 1em;
+  height: 1em;
+  text-indent: 100%;
+  overflow: hidden;
+}
+/* line 45, ../sass/template.scss */
+.games .more a:active, .games .more a:focus, .games .more a:hover {
+  background-position: 100% 0;
+}
+/* line 46, ../sass/template.scss */
+.games .action {
+  padding: 0 2em;
+  font-size: 1.2em;
+}
+/* line 47, ../sass/template.scss */
+.games button {
+  padding: 0;
+  background: none;
+  float: none;
+  height: 100%;
+  font: 1em/1 "OpenSansLight", Helvetica, Arial, sans-serif;
+  margin: 0 0 0 1em;
+}
+
+/* line 50, ../sass/template.scss */
+#gameDetail > ul > li + li {
+  padding: 0 0 0 12.5%;
+  font: 1.2em/1.25 "OpenSansLight", Helvetica, Arial, sans-serif;
+}
+/* line 51, ../sass/template.scss */
+#gameDetail strong {
+  font-family: "OpenSansExtrabold", Helvetica, Arial, sans-serif;
+}
+/* line 52, ../sass/template.scss */
+#gameDetail .detailAction {
+  border: 0;
+  margin: 3em 0 1em;
+}
+
+/* High res screens */
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* line 57, ../sass/template.scss */
+  body {
+    background-image: url(../images/bg@2x.jpg);
+  }
+
+  /* line 58, ../sass/template.scss */
+  .games .more a {
+    background-image: url(../images/icoAdd@2x.png);
+    background-size: 2em 1em;
+  }
+
+  /* line 59, ../sass/template.scss */
+  footer a {
+    background-image: url(../images/icoPlus@2x.gif);
+    background-size: 1em 1em;
+  }
 }

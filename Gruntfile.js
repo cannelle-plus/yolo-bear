@@ -57,6 +57,10 @@ module.exports = function(grunt) {
           files: ['src/images/**/*'],
           tasks: ['devimages']
         },
+        devfonts: {
+          files: ['src/fonts/**/*'],
+          tasks: ['devfonts']
+        },
         wwwroot : {
           files: ['www-root/**/*'],
           options : {
@@ -76,7 +80,8 @@ module.exports = function(grunt) {
         devjs : ['www-root/js/yolo-bear.js'],
         devcss : ['www-root/css/*.*'],
         devimages : ['www-root/images/*.*'],
-				options : { force: true }
+        devfonts : ['www-root/fonts/*.*'],
+       	options : { force: true }
       },
 
       copy: {
@@ -103,6 +108,12 @@ module.exports = function(grunt) {
           files: [
             // includes files within path and its sub-directories
             {expand: true, cwd:'src/images/', src: ['*.*'], dest: 'www-root/images'}
+          ]
+       },
+       devfonts: {
+          files: [
+            // includes files within path and its sub-directories
+            {expand: true, cwd:'src/fonts/', src: ['*.*'], dest: 'www-root/fonts'}
           ]
        },
       },
@@ -162,6 +173,10 @@ module.exports = function(grunt) {
             grunt:true,
             args : ['watch:devimages']
             },
+						{
+            grunt:true,
+            args : ['watch:devfonts']
+            },
             {
             grunt:true,
             args : ['watch:wwwroot']
@@ -191,6 +206,7 @@ module.exports = function(grunt) {
     grunt.registerTask('devhtml', ['clean:devhtml', 'copy:devhtml']);
     grunt.registerTask('devcss', ['clean:devcss','copy:devcss']);
     grunt.registerTask('devimages', ['clean:devimages','copy:devimages']);
+    grunt.registerTask('devfonts', ['clean:devfonts','copy:devfonts']);
    
 };
 
