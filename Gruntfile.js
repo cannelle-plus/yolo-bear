@@ -72,11 +72,11 @@ module.exports = function(grunt) {
       },
 
       clean : {
-        all : ['www-root'],
         devhtml : ['www-root/*.html'],
         devjs : ['www-root/js/yolo-bear.js'],
         devcss : ['www-root/css/*.*'],
-        devimages : ['www-root/images/*.*']
+        devimages : ['www-root/images/*.*'],
+				options : { force: true }
       },
 
       copy: {
