@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "karma start"
+    "test": ""
   },
   "devDependencies": {
     "chai": "^1.9.1",
