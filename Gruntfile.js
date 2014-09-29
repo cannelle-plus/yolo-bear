@@ -207,6 +207,8 @@ module.exports = function(grunt) {
     grunt.registerTask('devcss', ['clean:devcss','copy:devcss']);
     grunt.registerTask('devimages', ['clean:devimages','copy:devimages']);
     grunt.registerTask('devfonts', ['clean:devfonts','copy:devfonts']);
+
+		grunt.registerTask('travis', ['jshint','simplemocha']);
    
 };
 

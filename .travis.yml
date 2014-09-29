@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+    - "0.10.32"
+before_install: npm install -g grunt-cli
+install: sudo $(which npm) install
+before_script: grunt travis
+after_failure: "cat /home/travis/builds/cannelle-plus/massive-bear/npm-debug.log"
