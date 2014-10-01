@@ -1,7 +1,7 @@
 yolo-bear
 =========
 
-Site web statique
+Site web statique proto
 
 
 Install ruby
