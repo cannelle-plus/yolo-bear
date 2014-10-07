@@ -88,7 +88,8 @@ module.exports = function(grunt) {
       	devjs: {
 	        files: [
 	          // includes files within path and its sub-directories
-            {expand: true, cwd:'src/libs/', src: ['*.*'], dest: 'www-root/js'}
+            {expand: true, cwd:'src/libs/js', src: ['*.*'], dest: 'www-root/js'},
+            {expand: true, cwd:'src/libs/socket.io-1.1.0', src: ['*.*'], dest: 'www-root/socket.io'}
 	        ]
 	     },
        devhtml: {

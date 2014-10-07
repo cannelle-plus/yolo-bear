@@ -2,6 +2,7 @@ var gamesViewModel = require("./gamesViewModel.js");
 var googleLogin = require("./google.js");
 var facebookLogin = require("./facebook.js");
 var uiGames = require("./ui/ui.games.js");
+var socket = require("./socket.js");
 
 var app = function(ajaxRepo) {
 
@@ -9,6 +10,7 @@ var app = function(ajaxRepo) {
 	var facebook = new facebookLogin();
 	var games = new gamesViewModel(ajaxRepo);
 	var ui = new uiGames();
+	socket();
 	
 };
 
