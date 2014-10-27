@@ -1,16 +1,20 @@
-// function doNothing(event){
-// 	event.preventDefault();
-// 	event.stopPropagation();
-// }
+var fakeAjax = require("../jsTap/fakeAjax");
+var fakeSocket = require("../jsTap/fakeSocket");
+var logger = require('./logger');
+// var Ajax = require("./reactiveSources/ajax");
+// var Socket = require("./reactiveSources/socket.js");
 
-$(document).ready(function(){
+var app = require("./app");
 
-	var fakeRepository = require("../jsTap/fakeRepository");
 
-	var app = require("./app");
-	var ajaxRepository = require("./ajaxRepository");
+
+(function(global){
 	
-	var repository = new fakeRepository();
-	var yolo = new app(repository);	
-  
-});
+	$(document).ready(function(){
+
+		
+		var yolo = new app(fakeAjax(global),fakeSocket());	
+	  
+	});
+
+})(window || this);

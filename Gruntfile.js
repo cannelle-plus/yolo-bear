@@ -28,6 +28,7 @@ module.exports = function(grunt) {
       
 			jshint: {
         // define the files to lint
+        ignores: ['gruntfile.js', 'src/js/libs/**/*.js', 'specs/**/*.js'],
         files: ['gruntfile.js', 'src/js/**/*.js', 'specs/**/*.js'],
         // configure JSHint (documented at http://www.jshint.com/docs/)
         options: {
@@ -42,8 +43,19 @@ module.exports = function(grunt) {
 
       watch: {
         devjs : {
-          files: ['src/js/**/*.js', 'specs/**/*.js'],
+          files: [
+            'src/js/model/**/*.js',
+            'src/js/reactiveSources/**/*.js',
+            'src/js/viewmodel/**/*.js',
+            'src/js/*.js',
+            'specs/**/*.js'],
           tasks: ['devjs']
+        },
+        devjsUI : {
+          files: [
+            'src/js/ui/**/*.js'
+          ],
+          tasks: ['devjsUI']
         },
         devhtml: {
           files: ['src/html/**/*'],
@@ -64,7 +76,7 @@ module.exports = function(grunt) {
         wwwroot : {
           files: ['www-root/**/*'],
           options : {
-            livereload :1337
+            // livereload :1337
           }
         },
 				compass: {
@@ -145,7 +157,7 @@ module.exports = function(grunt) {
           options: {
             port: 9001,
             base: 'www-root',
-            livereload: true
+            // livereload: true
           }
         }
       },
@@ -157,6 +169,10 @@ module.exports = function(grunt) {
           tasks : [ {
             grunt:true,
             args : ['watch:devjs']
+            },
+            {
+            grunt:true,
+            args : ['watch:devjsUI']
             },
             {
             grunt:true,
@@ -204,6 +220,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['jshint', 'simplemocha', 'clean', 'browserify','compass', 'copy', "connect", 'parallel:web']);
 
     grunt.registerTask('devjs', ['jshint', 'simplemocha', 'clean:devjs','browserify']);
+    grunt.registerTask('devjsUI', ['jshint', 'clean:devjs','browserify']);
     grunt.registerTask('devhtml', ['clean:devhtml', 'copy:devhtml']);
     grunt.registerTask('devcss', ['clean:devcss','copy:devcss']);
     grunt.registerTask('devimages', ['clean:devimages','copy:devimages']);

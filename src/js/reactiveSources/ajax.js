@@ -1,59 +1,51 @@
+var ajax = function(){
 
-
-var ajaxRepository = function() {
-	var _gamesList = function(){
-		var deferred = $.Deferred();
-
-		$.ajax({
+	var _getGamesList = function(){
+		return $.ajax({
     	    type: "GET",
       		url: "/gamesList",
       		contentType: 'application/json'
-		}).done(function(data) {
-			deferred.resolve(JSON.parse(data));
-		})
-		  .fail(deferred.reject);
-
-		return deferred.promise();
+		});
 	};
 
-	var _joinGame = function(o) {
+	var _joinGame = function(cmd) {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/joinGame",
-	      data: JSON.stringify(o),
+	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
 	};
 
-	var _abandonGame = function	(o) {
+	var _abandonGame = function	(cmd) {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/abandonGame",
-	      data: JSON.stringify(o),
+	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
 	};
 
-	var _cancelGame = function(o) {
+	var _cancelGame = function(cmd) {
 		return $.ajax({
 	      type: "POST",
 	      url: "/game/cancelGame",
-	      data: JSON.stringify(o),
+	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
 	};
 
-	var _createGame = function(o){
+	var _createGame = function(cmd){
 		return $.ajax({
 	      type: "POST",
-	      url: "/game/createGame",
-	      data: JSON.stringify(o),
+	      url: "/game/scheduleGame",
+	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
 	};
 
 	return {
-		gamesList : _gamesList,
+		getGamesList : _getGamesList,
 		joinGame : _joinGame,
 		abandonGame : _abandonGame,
 		cancelGame : _cancelGame,
@@ -61,4 +53,4 @@ var ajaxRepository = function() {
 	};
 };
 
-module.exports = ajaxRepository;
+module.exports = ajax;

@@ -1,5 +1,4 @@
-﻿<!DOCTYPE HTML>
-<!--[if lt IE 7]><html class="ie ie6" lang="fr"><![endif]-->
+﻿<!--[if lt IE 7]><html class="ie ie6" lang="fr"><![endif]-->
 <!--[if IE 7]><html class="ie ie7" lang="fr"><![endif]-->
 <!--[if IE 8]><html class="ie ie8" lang="fr"><![endif]-->
 <!--[if gte IE 9]><html class="ie gteie9" lang="fr"><![endif]-->
@@ -44,32 +43,29 @@
 		</section>-->
 		<section id="games">
 			<script id="gamesListTemplate" type="text/x-dot-template">
-			{{~it.gamesList :game}} 
-				<li>
+				<li id="id{{=it.id}}"> 
 					<p class="avatar"><img src="images/avatar@2x.png" alt="" width="25" height="25" /></p>
 					<p class="infos">
-						<strong>{{=game.name}}</strong>
-						{{=game.location}}<br />
-						{{= new Date(game.startDate).toLocaleString("en-GB")}}
+						<strong>{{=it.name}}</strong>
+						{{=it.location}}<br />
+						{{= new Date(it.startDate).toLocaleString("en-GB")}}
 					</p>
-					<p class="number alert info success">{{= game.nbPlayers}}/{{= game.maxPlayers}}</p>
-					<p class="more"><a href="#" data-target="gameDetail">+</a></p>
+					<p class="number alert info success"><span class='nbPlayers'>{{= it.nbPlayers}}</span>/<span class='maxPlayers'>{{= it.maxPlayers}}</span></p>
+					<p class="more"><a href="#" data-target="gameDetail" data="{{=it.id}}">+</a></p>
 					<div class="action">
 						<p>Voulez-vous ?</p>
-						<button type="button" class="actionJoin" data="{{=game.id}}">Join</button>
-						<button type="button" class="actionAbandonGame" data="{{=game.id}}">Adandon</button>
-						<button type="button" class="actionCancelGame" data="{{=game.id}}">Cancel</button>
+						<button type="button" class="actionJoin" data="{{=it.id}}">Join</button>
+						<button type="button" class="actionAbandonGame" data="{{=it.id}}">Adandon</button>
+						<button type="button" class="actionCancelGame" data="{{=it.id}}">Cancel</button>
 					</div>
 				</li>
-
-				{{~}}
 			</script>
 
 			<ul id="gamesListContainer" class="games">
 			</ul>
 
 			<footer class="clearfix">
-				<p><a href="#" data-target="createGame">Créer une nouvelle partie</a></p>
+				<p><a href="#" data-target="scheduleGame">Créer une nouvelle partie</a></p>
 			</footer>
 		</section>
 		<section id="gameDetail">
@@ -98,10 +94,10 @@
 				<li class="detailAction"><a href="#">Quitter la partie</a></li>
 			</ul>
 			<footer class="clearfix">
-				<p><a href="#" data-target="createGame">Créer une nouvelle partie</a></p>
+				<p><a href="#" data-modal data-target="scheduleGame">Créer une nouvelle partie</a></p>
 			</footer>
 		</section>
-		<section id="createGame">
+		<section id="scheduleGame">
 			<h2 class="title">Create new game</h2>
 				<input type="text" id="gameName" name="name" value="test" placeholder="Name *">
 				<div class="semiField">
@@ -121,7 +117,7 @@
 					<option>10</option>
 				</select>
 				<div class="clearfix">
-					<button type="submit" id="btnCreateGame" name="envoyer" class="button">Create</button>
+					<button type="submit" id="btnScheduleGame" name="envoyer" data-target="games" class="button">Schedule</button>
 
 					<label id="textError"/>
 				</div>

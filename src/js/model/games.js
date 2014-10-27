@@ -1,18 +1,14 @@
 var Game = require('../model/game');
+var uuid = require('node-uuid');
+var logger = require('../logger');
 
-var games = function(ajaxRepository){
 
-	if (!ajaxRepository) throw 'repository is undefined for games';
+var games = function(pubsub){
 
-	var _ajaxRepository = ajaxRepository;
+	var _evtsUncommitted = [];
+	var _pubsub = pubsub;
+
 	var _games= {};
-
-
-	var _add = function(game)
-	{
-		if (!game.existsIn(_games))
-			game.addTo(_games);	
-	};
 
 	var _findFirstOrDefault =function(predicate)
 	{
@@ -28,82 +24,138 @@ var games = function(ajaxRepository){
 		};
 	};
 
-	var _joinGame = function(id) {
+	this.apply = function(evtType, payLoad, local)
+	{
+		_evtsUncommitted.push({
+			"evtType" : evtType,
+			"payLoad" : payLoad
+		});
+	};
+
+	this.publish = function(publish){
+		
+		var returnValue = [];
+		//copy the event to save
+		var evtsToCommit =  _evtsUncommitted ;
+		//reset the current events
+		_evtsUncommitted = [];
+
+		for (var i = evtsToCommit.length - 1; i >= 0; i--) {
+	    	_pubsub(evtsToCommit[0].evtType,evtsToCommit[0].payLoad);
+		}
+	};
+
+	this.add = function(msg)
+	{
+		var d= msg.payLoad; 
+		var game = new Game(this.apply,
+						d.id,
+						d.version,
+						d.name,
+						d.ownerId,
+						d.ownerUserName,
+						d.startDate,
+						d.location,
+						d.players,
+						d.nbPlayers,
+						d.maxPlayers);
+
+		if (!game.existsIn(_games))
+		{
+			game.addTo(_games);	
+			this.apply('gameAdded',  d); 
+		}
+	};
+
+	
+
+	this.joinGame = function(id, username) {
 		
 		var game = _findFirstOrDefault(_isGameForId(id));
 
-		if (!game) throw 'game not found';
-
-		// game to join is found , we therefore make the ajax call to perform the action
-		return game.joinGame(_ajaxRepository);
-
-	};
-
-	var _abandonGame = function(id) {
-		
-		var game = _findFirstOrDefault(_isGameForId(id));
-
-		if (!game) throw 'game not found';
-
-		// game to join is found , we therefore make the ajax call to perform the action
-		return game.abandonGame(_ajaxRepository);
-	};
-
-	var _cancelGame = function(id) {
-		
-		var game = _findFirstOrDefault(_isGameForId(id));
-
-		if (!game) throw 'game not found';
-
-		//todo add assert ownerid is the user doing this cancellation
-
-		// game to join is found , we therefore make the ajax call to perform the action
-		return game.cancelGameGame(_ajaxRepository);
-	};
-
-
-	var _createGame = function(gameName,gameLocation,date, hour, gameNbPlayers){
-
-		var error = null;
-
-		if(date.length===0 || hour.length===0)
-				error = "Date cannot be null !";
-
-		if(gameName.length===0)
-			error = "Game's name cannot be null !";
-
-		if(gameLocation.length===0)
-			error = "Game's location cannot be null !";
-
-		if(isNaN(gameNbPlayers))
-			error = "Game's players cannot be null !";
-
-		var gameDate = date +' '+hour;
-
-		if (error) {
-			var deferred = $.Deferred();
-			setTimeout(function(){ deferred.reject(error);}, 5);
-			return deferred.promise();
+		if (game) {
+			game.joinGame(username);
 		}
 		
-		return _ajaxRepository.createGame({
-				name:gameName, 
+	};
+
+	this.addPlayerToGame = function(id, username) {
+		logger.debug("_addPlayerToGame" + id + " " + username);
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (game) {
+			game.addPlayerToGame(username);
+		}
+		
+		
+	};
+
+	this.removePlayerFromGame = function(id, username, reason) {
+		logger.debug("_removePlayerFromGame" + id + " " + username + " " + reason);
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (game) {
+			game.removePlayerFromGame(username, reason);
+		}
+		
+	};
+
+	this.abandonGame = function(id,username) {
+		
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (game){
+			game.abandonGame(username);
+		}
+		
+	};
+
+	this.viewDetail = function(id) {
+		
+		//todo add assert ownerid is the user doing this cancellation
+		var game = _findFirstOrDefault(_isGameForId(id));
+
+		if (game) {
+			game.viewDetail();
+		}
+	};
+
+
+	this.scheduleGame = function(userName, userId, gameName,gameLocation,date, gameNbPlayers){
+
+		var error = [];
+
+		var id= uuid.v1();
+
+		var g = new Game(
+						this.apply,
+						id,
+						1,
+						gameName,
+						userId,
+						userName,
+						date,
+						gameLocation,
+						[userName],
+						1,
+						gameNbPlayers);
+		
+		g.addTo(_games);	
+
+		this.apply ('gameScheduled',  {
+				"id" : id, 
+				name : gameName, 
+				ownerId : userId,
+				ownerUserName : userName,
+				startDate : date,
 	      		location: gameLocation, 
-	      		startDate : gameDate,
-	      		nbPlayersRequired : gameNbPlayers 
+	      		players : [userName],
+	      		nbPlayers : 1,
+	      		maxPlayers : gameNbPlayers 
 	    });
 
-	    //should we add the game as it is to the _games list and display it on the screen,
-	    // we could wait for the server just to get some further details if need is.
 	};
 
-	return {
-		add : _add,
-		createGame : _createGame,
-		joinGame : _joinGame,
-		abandonGame :_abandonGame,
-		cancelGame : _cancelGame
-	};
 };
 
 module.exports = games;
