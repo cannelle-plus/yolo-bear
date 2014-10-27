@@ -1,4 +1,4 @@
-var Rx = require("Rx");
+var Rx = require("rx");
 var logger = require('../logger');
 var uuid = require('node-uuid');
 
