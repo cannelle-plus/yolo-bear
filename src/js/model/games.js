@@ -72,7 +72,7 @@ var games = function(pubsub){
 	this.joinGame = function(id, username) {
 		
 		var game = _findFirstOrDefault(_isGameForId(id));
-
+		
 		if (game) {
 			game.joinGame(username);
 		}

@@ -1,16 +1,19 @@
-var Socket = function(reactive)
-{
-  
-  var _socket = io.connect('http://localhost');
+var Session = require("../session");
 
-  this.subscribeTo = function(channel, action) {
-	  _socket.on(channel, action );	  	
-  };
-  // socket.on('news', function (data) {
-	 //    console.log(data);
-	 //    socket.emit('my other event', { my: 'data' });
-	 //  });	  
-  
+var Socket = function(reactive) {
+
+	var _socket = io.connect('http://localhost');
+
+	_socket.emit('login', Session.current());
+
+	this.subscribeTo = function(channel, action) {
+		_socket.on(channel, action);
+	};
+	// socket.on('news', function (data) {
+	//    console.log(data);
+	//    socket.emit('my other event', { my: 'data' });
+	//  });	  
+
 };
 
 module.exports = Socket;

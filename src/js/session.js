@@ -6,7 +6,7 @@ var Session = (function(){
 	var userId = uuid.v1();
 
 	var _current = {
-			username : "bond",
+			username : "yoann",
   		 	userId : uuid.v1()
   		 }; 
 

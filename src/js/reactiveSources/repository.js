@@ -54,6 +54,8 @@ var repository = function(reactiveGame, ajax, socket)
 			logger.debug('resolving getGamesList' + data);
 			var o = JSON.parse(data);
 
+			
+
 			for(var i=0 ; i< o.gamesList.length;i++)
 			{ 
 				var g = o.gamesList[i];

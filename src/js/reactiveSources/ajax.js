@@ -3,7 +3,7 @@ var ajax = function(){
 	var _getGamesList = function(){
 		return $.ajax({
     	    type: "GET",
-      		url: "/gamesList",
+      		url: "api/game/list",
       		contentType: 'application/json'
 		});
 	};
@@ -11,7 +11,7 @@ var ajax = function(){
 	var _joinGame = function(cmd) {
 		return $.ajax({
 	      type: "POST",
-	      url: "/game/joinGame",
+	      url: "/api/game/join",
 	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
@@ -20,7 +20,7 @@ var ajax = function(){
 	var _abandonGame = function	(cmd) {
 		return $.ajax({
 	      type: "POST",
-	      url: "/game/abandonGame",
+	      url: "/api/game/abandon",
 	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
@@ -29,7 +29,7 @@ var ajax = function(){
 	var _cancelGame = function(cmd) {
 		return $.ajax({
 	      type: "POST",
-	      url: "/game/cancelGame",
+	      url: "/api/game/cancel",
 	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});
@@ -38,7 +38,7 @@ var ajax = function(){
 	var _createGame = function(cmd){
 		return $.ajax({
 	      type: "POST",
-	      url: "/game/scheduleGame",
+	      url: "/api/game/schedule",
 	      data: JSON.stringify(cmd),
 	      contentType: 'application/json'
 		});

@@ -133,10 +133,10 @@ module.exports = function(grunt) {
       simplemocha: {
           options: {
               globals: ['expect'],
-              timeout: 3000,
+              timeout: 500,
               ignoreLeaks: false,
               ui: 'bdd',
-              reporter: 'tap'
+              reporter: 'nyan'
           },
           all: { src: ['specs/unitTests/*.js'] }
       },

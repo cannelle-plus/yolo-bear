@@ -16,7 +16,7 @@ var fakeAjax = function(global) {
 				ownerUserName : "julien",
 				startDate : "10/01/2014 10:00",
 				location : "playSoccer",
-				players : "julien,yoann",
+				players : "julien,aziz",
 				nbPlayers : 2,
 				maxPlayers : 8
 			},
@@ -28,7 +28,7 @@ var fakeAjax = function(global) {
 				ownerUserName : "julien",
 				startDate : "10/01/2014 19:00",
 				location : "playSoccer",
-				players : "julien,yoann",
+				players : "julien,aziz",
 				nbPlayers : 7,
 				maxPlayers : 8
 			}		 
