@@ -15,7 +15,7 @@
 }
 /* line 21, ../sass/template.scss */
 body {
-  background: url(../images/bg.jpg) 50% 50% no-repeat;
+  background: url(../images/bg.jpg) 50% 50% no-repeat #2d4d0a;
   background-size: cover;
   font-family: "OpenSansExtrabold", Helvetica, Arial, sans-serif;
 }
@@ -55,7 +55,7 @@ footer a {
 }
 /* line 32, ../sass/template.scss */
 footer a:active, footer a:focus, footer a:hover {
-  background: rgba(248, 192, 119, 0.3);
+  background-color: rgba(248, 192, 119, 0.3);
   border-radius: 0.3em;
 }
 
@@ -104,8 +104,8 @@ footer a:active, footer a:focus, footer a:hover {
 .games .more a {
   display: inline-block;
   background: url(../images/icoAdd.png) 0 0 no-repeat;
-  width: 1em;
-  height: 1em;
+  width: 1.4em;
+  height: 1.4em;
   text-indent: 100%;
   overflow: hidden;
 }
@@ -125,7 +125,6 @@ footer a:active, footer a:focus, footer a:hover {
   float: none;
   height: 100%;
   font: 1em/1 "OpenSansLight", Helvetica, Arial, sans-serif;
-  margin: 0 0 0 1em;
 }
 
 /* line 50, ../sass/template.scss */
