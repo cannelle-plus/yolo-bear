@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"form	Tag"
+			],
+			[
 				"tests",
 				"tests"
 			],
@@ -128,10 +132,18 @@
 	"buffers":
 	[
 		{
-			"file": "src/js/reactiveSources/ajax.js",
+			"file": "src/html/home.html",
 			"settings":
 			{
-				"buffer_size": 1119,
+				"buffer_size": 2125,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/html/signin.html",
+			"settings":
+			{
+				"buffer_size": 467,
 				"line_ending": "Unix"
 			}
 		}
@@ -139,7 +151,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 75.0,
 		"selected_items":
 		[
 			[
@@ -187,7 +199,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 449.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -213,15 +225,15 @@
 		"/home/yoann/bearToBear/yolo-bear/specs",
 		"/home/yoann/bearToBear/yolo-bear/specs/unitTests",
 		"/home/yoann/bearToBear/yolo-bear/src",
-		"/home/yoann/bearToBear/yolo-bear/src/js",
-		"/home/yoann/bearToBear/yolo-bear/src/js/reactiveSources"
+		"/home/yoann/bearToBear/yolo-bear/src/html"
 	],
 	"file_history":
 	[
+		"/home/yoann/bearToBear/yolo-bear/src/html/games.html",
+		"/home/yoann/bearToBear/yolo-bear/src/js/reactiveSources/ajax.js",
 		"/home/yoann/bearToBear/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
 		"/home/yoann/bearToBear/yolo-bear/src/jsTap/fakeAjax.js",
 		"/home/yoann/bearToBear/yolo-bear/src/js/model/games.js",
-		"/home/yoann/bearToBear/yolo-bear/src/js/reactiveSources/ajax.js",
 		"/home/yoann/bearToBear/yolo-bear/src/js/reactiveSources/repository.js",
 		"/home/yoann/bearToBear/yolo-bear/Gruntfile.js",
 		"/home/yoann/bearToBear/yolo-bear/src/jsTap/fakeSocket.js",
@@ -299,6 +311,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"signin",
 			"debug",
 			"bond",
 			"socket",
@@ -425,8 +438,7 @@
 			"logger",
 			"_params",
 			"params",
-			"UserIdParam",
-			"Profile"
+			"UserIdParam"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -444,33 +456,61 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/js/reactiveSources/ajax.js",
+					"file": "src/html/home.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1119,
+						"buffer_size": 2125,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1119,
-								1119
+								420,
+								420
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 265.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/html/signin.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 467,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
