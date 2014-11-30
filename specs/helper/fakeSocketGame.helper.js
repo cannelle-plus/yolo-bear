@@ -1,4 +1,5 @@
 var uuid = require('node-uuid');
+var to = require('../../src/js/reactiveSources/to');
 
 // { Id: '6b766657-05f0-4eea-f92d-22ac305e24c2',
 //   Version: 0,
@@ -7,7 +8,7 @@ var uuid = require('node-uuid');
 //      UserId: '311ca2bb-81dd-4b50-fadf-e45cdf287745',
 //      UserName: 'bond' },
 //   PayLoad:
-//    { Case: 'CreateGame',
+//    { Case: 'ScheduleGame',
 //      Fields: [ 'test', '007', '2014-10-24 18:00', 'Playsoccer', '4' ] } }
 // { host: 'localhost',
 //   port: '8081',
@@ -30,66 +31,63 @@ var createEvent = function(aggregateId,correlationId, userId, userName, evtType,
      		Fields: evt
      	}
  	 };
-}
+};
 
-var FakeSocket = function(r) {
+var FakeSocketGame = function(r) {
 	
 	var fn = function(reactive)
 	{
 
-		var to = reactive.to;
+		
 
-		var _createGameJoined = function(gameId){
+		var _ScheduleGameJoined = function(gameId){
 			var aggregateId = gameId;
 			var correlationId = uuid.v1();
 			var userId = uuid.v1();
 			var userName = "bond";
 			var evtType = "GameJoined";
 			var evt = [ ] ;
-			var evt= createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 
-			return evt;
+			return createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 
 		};
 
 
-		var _createGameCreated = function(gameId) {
+		var _ScheduleGameScheduled = function(gameId) {
 			
 			var aggregateId = uuid.v1();
 			var correlationId = uuid.v1();
 			var userId = uuid.v1();
 			var userName = "bond";
-			var evtType = "GameCreated";
+			var evtType = "GameScheduled";
 			var evt = [ 'testNewGamePooping up', '007', '2014-10-24 18:00', 'Playsoccer', '4' ] ;
-			var evt= createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
+			
 
-			return evt;
+			return createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 
 		};
 
-		var _createGameAbandonned = function(gameId, username) {
+		var _ScheduleGameAbandonned = function(gameId, username) {
 			var aggregateId = gameId;
 			var correlationId = uuid.v1();
 			var userId = uuid.v1();
 			var userName = username;
 			var evtType = "GameAbandonned";
 			var evt = [ '' ] ;
-			var evt= createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 
-			return evt;
+			return createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 		};
 
 
-		var _createGameCancelled = function(gameId) {
+		var _ScheduleGameCancelled = function(gameId) {
 			var aggregateId = uuid.v1();
 			var correlationId = uuid.v1();
 			var userId = uuid.v1();
 			var userName = "bond";
 			var evtType = "GameCancelled";
 			var evt = [ ] ;
-			var evt= createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 
-			return evt;
+			return createEvent(aggregateId,correlationId, userId, userName, evtType, evt);
 		};
 
 
@@ -98,24 +96,24 @@ var FakeSocket = function(r) {
 			{
 				case "GameJoined" :
 					reactive.observable("emitFakeSocketGameJoined").subscribe(to( function(evt){
-						action(_createGameJoined(evt.payLoad.id));
+						action(_ScheduleGameJoined(evt.payLoad.id));
 					})); 
 				break;
-				case "GameCreated" :
-					reactive.observable("emitFakeSocketGameCreated").subscribe(to( function(evt){
-						action(_createGameCreated(evt.payLoad.id));
+				case "GameScheduled" :
+					reactive.observable("emitFakeSocketGameScheduled").subscribe(to( function(evt){
+						action(_ScheduleGameScheduled(evt.payLoad.id));
 					})); 
 				break;
 				case "GameAbandonned" :
 					reactive.observable("emitFakeSocketGameAbandonned").subscribe(to( function(evt){
-						action(_createGameAbandonned(evt.payLoad.id,evt.payLoad.username));
+						action(_ScheduleGameAbandonned(evt.payLoad.id,evt.payLoad.username));
 					})); 
 				break;
 
 			}
 
-		}
-	}
+		};
+	};
 
 	if (r)
 		return new fn(r);
@@ -124,4 +122,4 @@ var FakeSocket = function(r) {
 
 };
 
-module.exports = FakeSocket;
+module.exports = FakeSocketGame;

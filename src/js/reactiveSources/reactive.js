@@ -3,8 +3,6 @@ var logger = require('../logger');
 var uuid = require('node-uuid');
 
 
-
-
 var Reactive = function(aggType) {
 	var _aggChannel = "evt." + aggType + ".";
 
@@ -51,26 +49,8 @@ var Reactive = function(aggType) {
 				return x.eventType== evtTypes ;
 		});
 	};
-
-	var _to= function(action){
-		return 	{
-			onNext : function (x) { 
-				logger.debug('executing :' + action);	
-				try {
-					action(x); 
-			    }
-                catch(e) {
-                   logger.error(e);
-                }
-			},
-			onError : function (e) { console.log(' error: ' + e.message); },
-			onCompleted : function () { console.log('completed'); }
-		};			
-	};
-
 	
 	return {
-		to : _to,
 		publish : _publish,
 		observable : _observable,
 	};
@@ -78,4 +58,6 @@ var Reactive = function(aggType) {
 
 
 module.exports = Reactive;	
+
+
 

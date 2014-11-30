@@ -1,22 +1,23 @@
 var Game = require('../model/game');
 var logger = require('log4js').getLogger();
 var uuid = require('node-uuid');
+var to = require('./to');
 
 
-var repository = function(reactiveGame, ajax, socket) 
+var repository = function(reactive, ajax, socket) 
 {
-	if (!reactiveGame)
-		throw "reactiveGame is not instanciated";
+	if (!reactive)
+		throw "reactive is not instanciated";
 
 	if (!ajax)
 		throw "ajax is not instanciated";
 
-	var _observable = reactiveGame.observable;
-	var to = reactiveGame.to;
+	var _observable = reactive.observable;
+	
 
 	var publish = {
 		gameAdded : function(id, ownerid, ownerUsername, name,  version, date, location, players, nbPlayers, maxPlayers ){
-			reactiveGame.publish('serverGameAdded', {
+			reactive.publish('serverGameAdded', {
 				"id" : id,
 				"name" : name,
 				"ownerid" : ownerid,
@@ -32,7 +33,7 @@ var repository = function(reactiveGame, ajax, socket)
 
 		playerAddedToGame : function(id, username){
 			logger.debug(id + ' ' + username);
-			reactiveGame.publish("serverPlayerAddedToGame", {
+			reactive.publish("serverPlayerAddedToGame", {
 				'id' :id,
 				'username' : username
 			});
@@ -40,25 +41,47 @@ var repository = function(reactiveGame, ajax, socket)
 
 		playerRemovedFromGame : function(id, username, reason){
 			logger.debug(id + ' ' + username);
-			reactiveGame.publish("serverPlayerRemovedFromGame", {
+			reactive.publish("serverPlayerRemovedFromGame", {
 				'id' :id,
 				'username' : username,
 				'reason' : reason
 			});
-		}
+		},
+
+		CurrentBearReceived : function(bearId, bearUsername, socialId, avatarId, hasSignedIn){
+			logger.debug(bearId + ' ' + bearUsername);
+			reactive.publish("serverCurrentBearReceived", {
+				'bearId' : bearId,
+				'bearUsername' : bearUsername,
+				'socialId' : socialId,
+				'avatarId' : avatarId,
+				'hasSignedIn' : hasSignedIn
+			});
+		},
+
+		
 	} ;
 	
-	var _getGamesList = function(){
+	var _getCurrentBear = function(){
+		return ajax.getCurrentBear().then(function(data) {
+			logger.debug('resolving current Bear' + data);
 
+			publish.CurrentBearReceived(
+					data.bearId,
+					data.bearUsername,
+					data.socialId,
+					data.avatarId,
+					data.hasSignedIn);
+		});
+		//what to do if it fails, should we handle it , event to be Scheduled , name to be found? 
+	};
+
+	var _getGamesList = function(){
 		return ajax.getGamesList().then(function(data) {
 			logger.debug('resolving getGamesList' + data);
-			var o = JSON.parse(data);
-
-			
-
-			for(var i=0 ; i< o.gamesList.length;i++)
+			for(var i=0 ; i< data.gamesList.length;i++)
 			{ 
-				var g = o.gamesList[i];
+				var g = data.gamesList[i];
 				publish.gameAdded(g.id,
 						g.ownerId,
 						g.ownerUserName,
@@ -72,7 +95,6 @@ var repository = function(reactiveGame, ajax, socket)
 		
 			}
 		});
-		//what to do if it fails, should we handle it , event to be created , name to be found? 
 	};
 
 	var index =0;
@@ -90,9 +112,11 @@ var repository = function(reactiveGame, ajax, socket)
 	};
 
 	var _scheduleGame = function(cmd){
-		
-		ajax.createGame(cmd);
-	
+		ajax.ScheduleGame(cmd);
+	};
+
+	var _signIn = function(cmd){
+		ajax.signIn(cmd);	
 	};
 
 
@@ -103,7 +127,7 @@ var repository = function(reactiveGame, ajax, socket)
 	//      UserId: '311ca2bb-81dd-4b50-fadf-e45cdf287745',
 	//      UserName: 'bond' },
 	//   PayLoad:
-	//    { Case: 'GameCreated',
+	//    { Case: 'GameScheduled',
 	//      Fields: [ 'test', '007', '2014-10-24 18:00', 'Playsoccer', '4' ] } }
 	// { host: 'localhost',
 	//   port: '8081',
@@ -111,7 +135,7 @@ var repository = function(reactiveGame, ajax, socket)
 	//   method: 'POST',
 	//   headers: { 'Content-Type': 'application/json', 'Content-Length': 283 } }
 	//transforms an event as before to an event yolo can understand
-	socket.subscribeTo('GameCreated', function(evtSocket){
+	socket.subscribeTo('GameScheduled', function(evtSocket){
 		
 		publish.gameAdded(evtSocket.Id,
 			evtSocket.MetaData.UserId,
@@ -148,9 +172,11 @@ var repository = function(reactiveGame, ajax, socket)
 	_observable('gameAbandonned').subscribe(to(_abandonGame));
 	_observable('gameScheduled').subscribe(to(_scheduleGame));
 	_observable('gameCancelled').subscribe(to(_cancelGame));
+	_observable('hasSignedIn').subscribe(to(_signIn));
 
 	return {
-		getGamesList : _getGamesList
+		getGamesList : _getGamesList,
+		getCurrentBear : _getCurrentBear
 	};
 };
 

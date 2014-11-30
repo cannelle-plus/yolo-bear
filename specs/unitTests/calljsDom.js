@@ -20,9 +20,7 @@ var calljsDom = function(description, fileName, callback)
 	    var window = document.parentWindow;
 	    window.$ = window.jQuery = jQuery(window) ;
 
-	    var reactive = new Reactive("games");
-
-	    callback(done, window, reactive);
+	    callback(done, window);
 
 	});
 

@@ -2,7 +2,7 @@ var Session = require("../session");
 
 var Socket = function(reactive) {
 
-	var _socket = io.connect('http://localhost');
+	var _socket = io.connect('http://localhost:8888');
 
 	_socket.emit('login', Session.current());
 

@@ -4,6 +4,62 @@
 		"selected_items":
 		[
 			[
+				"_",
+				"_currentBear"
+			],
+			[
+				"bear",
+				"bear2bearModule"
+			],
+			[
+				"_soc",
+				"_socketBear"
+			],
+			[
+				"_a",
+				"_ajaxBear"
+			],
+			[
+				"_s",
+				"_socketGame"
+			],
+			[
+				"_aja",
+				"_ajaxGame"
+			],
+			[
+				"get",
+				"getGames"
+			],
+			[
+				"_bear",
+				"_bearUsername"
+			],
+			[
+				"a",
+				"action"
+			],
+			[
+				"is",
+				"isNew"
+			],
+			[
+				"soc",
+				"socialId"
+			],
+			[
+				"fak",
+				"fakeSocketGame"
+			],
+			[
+				"reactive",
+				"reactiveGame"
+			],
+			[
+				"game",
+				"gamebus"
+			],
+			[
 				"for",
 				"form	Tag"
 			],
@@ -116,10 +172,6 @@
 				"games"
 			],
 			[
-				"bear",
-				"bearRepo"
-			],
-			[
 				"expec",
 				"expected"
 			],
@@ -132,28 +184,32 @@
 	"buffers":
 	[
 		{
-			"file": "src/html/home.html",
+			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 2125,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/html/signin.html",
-			"settings":
-			{
-				"buffer_size": 467,
-				"line_ending": "Unix"
+				"buffer_size": 612,
+				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 75.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"packag",
+				"Package Control: List Packages"
+			],
 			[
 				"Grunt",
 				"Grunt"
@@ -183,14 +239,6 @@
 				"Package Control: Disable Package"
 			],
 			[
-				"packa",
-				"Package Control: List Packages"
-			],
-			[
-				"pac",
-				"Package Control: Install Package"
-			],
-			[
 				"pack	",
 				"Package Control: List Packages"
 			],
@@ -199,16 +247,11 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 575.0
+		"width": 416.0
 	},
 	"console":
 	{
-		"height": 198.0,
-		"history":
-		[
-			"ls",
-			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
-		]
+		"height": 198.0
 	},
 	"distraction_free":
 	{
@@ -219,16 +262,50 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/home/yoann/bearToBear/yolo-bear",
-		"/home/yoann/bearToBear/yolo-bear/specs",
-		"/home/yoann/bearToBear/yolo-bear/specs/unitTests",
-		"/home/yoann/bearToBear/yolo-bear/src",
-		"/home/yoann/bearToBear/yolo-bear/src/html"
-	],
 	"file_history":
 	[
+		"/D/projects/yolo-bear/specs/unitTests/bearViewModel.spec.js",
+		"/D/projects/yolo-bear/specs/helper/fakeAjaxBear.helper.js",
+		"/D/projects/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
+		"/D/projects/yolo-bear/src/js/bear2bearModule.js",
+		"/D/projects/yolo-bear/src/js/yoloBear.js",
+		"/D/projects/yolo-bear/src/js/app.js",
+		"/D/projects/yolo-bear/specs/helper/fakeAjaxGame.helper.js",
+		"/D/projects/yolo-bear/src/js/viewmodel/bearsViewModel.js",
+		"/D/projects/yolo-bear/Gruntfile.js",
+		"/D/projects/yolo-bear/www-root/js/app.js",
+		"/D/projects/yolo-bear/src/js/model/bear.js",
+		"/D/projects/yolo-bear/src/js/model/signedBear.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/ajax.js",
+		"/D/projects/yolo-bear/src/js/session.js",
+		"/D/projects/yolo-bear/src/js/viewmodel/gamesViewModel.js",
+		"/D/projects/yolo-bear/src/html/games.html",
+		"/D/projects/yolo-bear/www-root/games.html",
+		"/D/projects/yolo-bear/specs/unitTests/calljsDom.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/reactive.js",
+		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/D/projects/yolo-bear/src/js/massiveBear.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/repository.js",
+		"/D/projects/yolo-bear/src/js/model/game.js",
+		"/D/projects/yolo-bear/specs/unitTests/sequence.js",
+		"/D/projects/yolo-bear/src/js/ui/gamesRender.js",
+		"/D/projects/yolo-bear/src/js/appWindow.js",
+		"/D/projects/yolo-bear/src/js/ui/bearsRender.js",
+		"/D/projects/yolo-bear/specs/unitTests/pubsubBasics.spec.js",
+		"/D/projects/yolo-bear/src/js/model/games.js",
+		"/D/projects/yolo-bear/specs/helper/fakeSocketGame.helper.js",
+		"/D/projects/yolo-bear/specs/helper/fakeSocketBear.helper.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/to.js",
+		"/D/projects/yolo-bear/src/libs/js/jquery-1.11.1.min.js",
+		"/D/projects/yolo-bear/specs/helper/fakeAjax.helper.js",
+		"/D/projects/yolo-bear/specs/sss.spec.js",
+		"/D/projects/yolo-bear/specs/unitTests/app.spec.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/socket.js",
+		"/D/projects/yolo-bear/specs/helper/fakeSocket.helper.js",
+		"/D/projects/yolo-bear/src/jsTap/fakeAjax.js",
+		"/D/projects/yolo-bear/src/html/signin.html",
+		"/D/projects/db-wookie/.gitignore",
+		"/D/projects/yolo-bear/src/html/home.html",
 		"/home/yoann/bearToBear/yolo-bear/src/html/games.html",
 		"/home/yoann/bearToBear/yolo-bear/src/js/reactiveSources/ajax.js",
 		"/home/yoann/bearToBear/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
@@ -299,146 +376,162 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
+			"D:\\projects\\yolo-bear\\src\\js",
+			"D:\\projects\\yolo-bear\\src",
+			"D:\\projects\\yolo-bear\\specs",
+			"D:\\projects\\yolo-bear\\src",
+			"D:\\projects\\yolo-bear\\specs",
+			"D:\\projects\\yolo-bear\\src",
+			"D:\\projects\\yolo-bear\\specs",
+			"D:\\projects\\yolo-bear\\src",
+			"D:\\projects\\yolo-bear\\specs",
+			"D:\\projects\\yolo-bear\\src",
+			"D:\\projects\\yolo-bear\\",
+			"D:\\projects\\yolo-bear\\specs",
+			"D:\\projects\\yolo-bear\\src",
+			"D:\\projects\\yolo-bear",
+			"/home/yoann/bearToBear/yolo-bear/",
+			"/home/yoann/bearToBear/yolo-bear",
 			"/home/yoann/bearToBear/yolo-bear/src",
 			"/home/yoann/bearToBear/massive-bear/src"
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
-			"signin",
-			"debug",
-			"bond",
-			"socket",
-			"_socket",
+			"global",
+			"bear2bearModule",
+			"BearsViewModel",
+			"GamesViewModel",
+			"bear",
+			"_gameApp",
+			"_gameModule",
+			"_gameApp",
+			"bear2bearModule",
+			"bear2bearApp",
+			"_bearModule",
+			"bear",
+			"session",
+			"module.addToWindow(window, Session.current());",
+			"Session.current()",
+			"currentBear",
+			"_currentBear",
+			"Bear",
+			"SignedBear",
+			"CurrentBear",
+			"SignedBear",
+			"bear",
+			"CurrentBear",
+			"pubsub",
+			"Bear",
 			"Session",
-			"schedule",
-			"len",
-			"game",
-			"handles",
-			"sendFile",
-			"[\"/api/game/abandon\"]",
-			"[\"/api/game/join\"]",
-			"[\"/api/game/list\"]",
-			"bearsRoutes",
-			"gameRoutes",
-			"commandHandler",
-			"fakeDispatcher",
-			"gameRoutes",
-			"FakeGameRepo",
-			"bearRepo",
-			"gameRepo",
-			"port",
-			"currentPort",
-			"port",
-			"doNthing",
-			"nextTest",
-			"doNthing",
-			"runtest",
-			"startTest",
-			"unitTest",
-			"nextTest",
-			"test",
-			"runtest",
-			"nextTestToRunWhenFinished",
-			"nextTest",
-			"testEnqueued",
-			"testInitial",
-			"newStart",
-			"startTest",
-			"testFinished",
-			"bears",
-			"yoann",
-			"profileId",
-			"fnExecute();",
-			"_returnResponse",
-			"_returnJsonTo",
-			"request",
-			"_returnResponse",
-			"\"To\"",
-			"route",
-			"extract",
+			"hasSignedIn",
+			"evt",
+			"_null",
+			"currentBear",
+			"session",
+			"currentBear",
+			"session",
+			"bear",
+			"_bear",
+			"Bear",
+			"gamesViewModel",
+			"_currentBear",
+			"throw \"session is not instanciated\";",
+			"session",
+			"undefined",
+			"bear",
+			"_current",
+			"_currentBear",
+			"return",
+			"Session",
+			"session",
+			"bear2bearModule",
+			"Session",
+			"_self",
+			"fake",
+			"jQuery",
+			"jquery",
+			"require('jquery')",
+			"var vm = module.addToWindow(window, Session.current());",
+			"module.addToWindow(window, Session.current());",
+			"getGames",
+			"_gameModule",
+			"hasSignedIn",
+			"signedIn",
+			"_gameModule",
+			"BearsViewModel",
+			"fakeSocketBear",
+			"fakeAjaxBear",
+			"Game",
+			"ajax",
+			"_ajaxGame",
+			"_socketGame",
+			"_ajaxGame",
+			"Game",
+			"withGames",
+			"gameModule",
+			"joinGame",
+			"getGames",
+			"joinGame",
+			"_signIn",
+			"signIn",
+			"getCurrentBear",
+			"ScheduleGame",
+			"_signIn",
+			"gameJoined",
+			"hasSignedIn",
+			"_hasSignedIn",
+			"this.apply",
+			"apply",
+			"_apply",
+			"apply",
+			"bearId",
+			"_avatarId",
+			"this.",
 			"logger",
-			"execute: function() {}",
-			"execute",
-			"andExecuteFor",
-			"ExecuteIn",
-			"profileId",
-			"profileIdParam",
-			"UserId",
-			"userId",
-			"UserId",
-			"id",
-			"profileId",
-			"UserId",
-			"userId",
-			"profileId",
-			"userId",
-			"fnExecute",
-			"And",
-			"execute",
-			"route",
-			"handles",
-			"andExecuteFor",
-			"executeFor",
-			"ExecuteFor",
-			"decompose",
-			"retri",
-			"expressApp",
-			"app",
-			"expressApp",
-			"app",
-			"expressApp",
-			"join",
-			"abandon",
-			"list",
-			"join",
-			"route",
-			"_assertRoute",
-			"app",
-			"middleware",
-			"_defaultHandles",
-			"OK",
-			"_sessions",
-			"Sessions",
-			"app",
-			"done",
-			"router",
-			"expressApp",
-			"app",
-			"_router",
-			"param",
-			"fakeApp",
-			"expressApp",
-			"var middleware = new Middleware(fakeApp);",
-			"app",
-			"source",
-			"fakeApp",
-			"fnCreateRoutes",
-			"fnCreateRoutesWithOnlyApp",
-			"middleware",
-			"routes",
-			"RoutesProxy",
-			"Middleware",
-			"execute",
-			"handles",
-			"execute",
-			"handles",
-			"param",
-			"params",
-			"getRoutes",
-			"params",
-			"error",
-			"logger.error",
-			"logger",
-			"_params",
-			"params",
-			"UserIdParam"
+			"signedIn",
+			"uiBearRenderer",
+			"notSignedIn",
+			"signedIn",
+			"serverCurrentBearReceived",
+			"notSignedIn",
+			"serverGameAdded",
+			"whenCount",
+			"serverCurrentBearReceived",
+			"uiPlayerRemovedFromGame",
+			"uiGameDetailled",
+			"uiPlayerAddedToGame",
+			"uiPlayerRemovedFromGame",
+			"gameNotJoined",
+			"uiPlayerAddedToGame",
+			"gameNotJoined",
+			"gameAbandonned",
+			"uiPlayerAddedToGame",
+			"gameNotJoined",
+			"gameJoined",
+			"gameScheduled",
+			"uiGameScheduled",
+			"gameAdded",
+			"gameScheduled",
+			"uiGameUpdated",
+			"uiGameDetailled",
+			"uiPlayerAddedToGame",
+			"gamesListContainer",
+			"uiGameUpdated",
+			"action",
+			"renderPlayerAddedToGame",
+			"uiGameUpdated",
+			"gameScheduled",
+			"gameAbandonned",
+			"uiGameUpdated",
+			"gameAbandonned",
+			"gameJoined"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -446,74 +539,152 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			"ScheduleGame",
+			"Scheduled",
+			"../helper/fakeSocket.helper",
+			"../helper/fakeAjax.helper"
 		],
 		"reverse": false,
-		"show_context": false,
+		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/html/home.html",
-					"semi_transient": false,
+					"file": ".gitignore",
 					"settings":
 					{
-						"buffer_size": 2125,
+						"buffer_size": 612,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								420,
-								420
+								47,
+								47
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/html/signin.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 467,
-						"regions":
-						{
-						},
-						"selection":
-						[
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
 							[
-								0,
-								467
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -554,7 +725,6 @@
 	{
 		"height": 112.0
 	},
-	"project": "yolobear.sublime-project",
 	"replace":
 	{
 		"height": 46.0
@@ -575,30 +745,15 @@
 		[
 			[
 				"",
-				"~/bearToBear/massive-bear/massive-bear.sublime-project"
+				"/D/projects/yolo-bear/yolobear.sublime-project"
 			]
 		],
 		"width": 380.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 249.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

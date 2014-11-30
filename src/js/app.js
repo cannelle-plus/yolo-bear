@@ -1,42 +1,60 @@
-var googleLogin = require("./google.js");
-var facebookLogin = require("./facebook.js");
-var Reactive = require("./reactiveSources/reactive.js");
+var SignedBear = require("./model/signedBear");
+var GamesViewModel = require("./viewmodel/gamesViewModel");
+var BearsViewModel = require("./viewmodel/bearsViewModel");
+var to = require('./reactiveSources/to');
+
 var navigation = require('./ui/navigation');
 var Session = require("./session");
-var gamesViewModel = require("./viewmodel/gamesViewModel.js");
+var bear2bearModule = require("./bear2bearModule");
 var logger = require('./logger');
 
+var app = function(window) {
 
-var fakeSocket = require("../jsTap/fakeSocket");
+	var _self= this;
+	var _currentBear;
 
-var app = (function(global){
+	navigation();
 
-	logger.setLevel('ERROR');
+	var _ajaxGame , _socketGame ,__ajaxBear, _socketBear;
 
-	return function(ajax, socket) {
 
-		if (!ajax) throw 'ajax is not defined';
-		if (!socket) throw 'socket is not defined';
+	this.withGames = function(ajax, socket) {
+		_ajaxGame = ajax;
+		_socketGame = socket;
 
-		var reactive = new Reactive("games");
-
-		//gentil hack
-		if (!socket.subscribeTo)
-			socket = new socket(reactive);
-
-		var games = new gamesViewModel(global, reactive, Session.current(), ajax, socket);
-		
-				
-		// socket();
-
-		navigation();
-		var google = new googleLogin();
-		var facebook = new facebookLogin();
-
+		return _self;
 	};
 
-})(window || this);
+	this.withBear = function(ajax, socket) {
+		_ajaxBear = ajax;
+		_socketBear = socket;
 
+		return _self;
+	};
 
+	this.start = function() {
+		
+		var BearModule = bear2bearModule("bear", BearsViewModel);
+		var GameModule = bear2bearModule("game", GamesViewModel);
+
+		//creating module
+		var _bearModule = new BearModule(_ajaxBear, _socketBear);
+		var _gameModule = new GameModule(_ajaxGame, _socketGame);
+		
+		//start the bear vm
+		var _bearVm = _bearModule.addToWindow(window);
+
+		_bearModule.observable(['signedIn', 'hasSignedIn'])
+			.subscribe(to(function(evt) {
+				
+				_currentBear = new SignedBear( evt.bearId,evt.bearUsername);
+
+				//starting the other vms
+				var _gameVm = _gameModule.addToWindow(window, _currentBear);
+				_gameVm.getGames();
+			}));
+	};
+
+};
 
 module.exports = app;

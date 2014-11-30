@@ -28,7 +28,8 @@ var game = function(apply, id, version, name, ownerId, ownerUsername, date, loca
 	var _maxPlayers = maxPlayers;
 	
 	this.joinGame = function(username) {
-		
+
+		logger.debug('joinGame' + username);
 		if (_players.indexOf(username)>-1)
 		{
 			_apply('gameNotJoined', {

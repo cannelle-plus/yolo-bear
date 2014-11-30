@@ -93,6 +93,8 @@ module.exports = function(grunt) {
         devcss : ['www-root/css/*.*'],
         devimages : ['www-root/images/*.*'],
         devfonts : ['www-root/fonts/*.*'],
+        massive : ['dist/*.*'],
+
        	options : { force: true }
       },
 
@@ -101,32 +103,41 @@ module.exports = function(grunt) {
 	        files: [
 	          // includes files within path and its sub-directories
             {expand: true, cwd:'src/libs/js', src: ['*.*'], dest: 'www-root/js'},
-            {expand: true, cwd:'src/libs/socket.io-1.1.0', src: ['*.*'], dest: 'www-root/socket.io'}
+            {expand: true, cwd:'src/libs/socket.io-1.1.0', src: ['*.*'], dest: 'www-root/socket.io'},
+
+            {expand: true, cwd:'src/libs/js', src: ['*.*'], dest: 'dist/js'},
+            {expand: true, cwd:'src/libs/socket.io-1.1.0', src: ['*.*'], dest: 'dist/socket.io'}
 	        ]
 	     },
        devhtml: {
           files: [
             // includes files within path and its sub-directories
             {expand: true, cwd:'src/html/', src: ['**'], dest: 'www-root'},
-            {expand: true, cwd:'src/img/', src: ['*.*'], dest: 'www-root/img'}
+            {expand: true, cwd:'src/img/', src: ['*.*'], dest: 'www-root/img'},
+
+            {expand: true, cwd:'src/html/', src: ['**'], dest: 'dist'},
+            {expand: true, cwd:'src/img/', src: ['*.*'], dest: 'dist/img'}
           ]
        },
        devcss: {
           files: [
             // includes files within path and its sub-directories
-            {expand: true, cwd:'src/css/', src: ['*.*'], dest: 'www-root/css'}
+            {expand: true, cwd:'src/css/', src: ['*.*'], dest: 'www-root/css'},
+            {expand: true, cwd:'src/css/', src: ['*.*'], dest: 'dist/css'}
           ]
        },
        devimages: {
           files: [
             // includes files within path and its sub-directories
-            {expand: true, cwd:'src/images/', src: ['*.*'], dest: 'www-root/images'}
+            {expand: true, cwd:'src/images/', src: ['*.*'], dest: 'www-root/images'},
+            {expand: true, cwd:'src/images/', src: ['*.*'], dest: 'dist/images'}
           ]
        },
        devfonts: {
           files: [
             // includes files within path and its sub-directories
-            {expand: true, cwd:'src/fonts/', src: ['*.*'], dest: 'www-root/fonts'}
+            {expand: true, cwd:'src/fonts/', src: ['*.*'], dest: 'www-root/fonts'},
+            {expand: true, cwd:'src/fonts/', src: ['*.*'], dest: 'dist/fonts'}
           ]
        },
       },
@@ -142,9 +153,17 @@ module.exports = function(grunt) {
       },
 
       browserify: {
-          yoloBear : { 
+          yolo : { 
             files : {
-              'www-root/js/yolo-bear.js' :['src/js/yoloBear.js']
+              'www-root/js/app.js' :['src/js/yoloBear.js']
+            },
+            options : {
+              watch : true
+            }  
+          },
+          massive : { 
+            files : {
+              'dist/js/app.js' :['src/js/massiveBear.js']
             },
             options : {
               watch : true
@@ -218,6 +237,7 @@ module.exports = function(grunt) {
     
     // Default task(s).
     grunt.registerTask('default', ['jshint', 'simplemocha', 'clean', 'browserify','compass', 'copy', "connect", 'parallel:web']);
+    
 
     grunt.registerTask('devjs', ['jshint', 'simplemocha', 'clean:devjs','browserify']);
     grunt.registerTask('devjsUI', ['jshint', 'clean:devjs','browserify']);

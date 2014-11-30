@@ -4,6 +4,7 @@ logs
 
 # Runtime data
 www-root
+dist
 db
 .sass-cache
 *.pid

@@ -1,19 +1,24 @@
-var uuid = require('node-uuid');
+// var uuid = require('node-uuid');
 
-var Session = (function(){
+// var Session = (function(){
 
-	var username = "bond";
-	var userId = uuid.v1();
+// 	var _currentBear; 
 
-	var _current = {
-			username : "yoann",
-  		 	userId : uuid.v1()
-  		 }; 
+// 	return {
+// 		update : function(bear) { 
+// 			if (!bear)
+// 				throw 'session : bear unknown';
 
-	return {
-		current : function() { return _current; }
-	};
+// 			_currentBear = bear; 
+// 		},
+// 		current : function() { 
+// 			if (!_currentBear)
+// 				throw 'session : no current bear assigned yet!!!';
 
-})();
+// 			return _currentBear; 
+// 		}
+// 	};
 
-module.exports = Session;
+// })();
+
+// module.exports = Session;

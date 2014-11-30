@@ -1,21 +1,17 @@
 var Ajax = require("./reactiveSources/ajax");
 var Socket = require("./reactiveSources/socket.js");
 
-var app = require("./app");
+var App = require("./app");
 
 
 $(document).ready(function(){
-	
-	var yolo = new app(new Ajax(), new Socket());	
+
+	var app = new App(window);	
+
+    app.withGames(Ajax, Socket)
+       .withBear(Ajax, Socket)
+       .start();
   
 });
 
 
-(function(global){
-	
-	$(document).ready(function(){
-		var yolo = new app(new Ajax(), new Socket());			
-		
-		});
-
-})(window || this);

@@ -1,20 +1,20 @@
-var fakeAjax = require("../jsTap/fakeAjax");
-var fakeSocket = require("../jsTap/fakeSocket");
-var logger = require('./logger');
-var Ajax = require("./reactiveSources/ajax");
-var Socket = require("./reactiveSources/socket.js");
+var FakeAjaxGame = require("../../specs/helper/fakeAjaxGame.helper");
+var FakeAjaxBear = require("../../specs/helper/fakeAjaxBear.helper");
+var FakeSocketGame = require("../../specs/helper/fakeSocketGame.helper");
+var FakeSocketBear = require("../../specs/helper/fakeSocketBear.helper");
 
-var app = require("./app");
-
+var App = require("./app");
 
 
-(function(global){
 	
-	$(document).ready(function(){
+$(document).ready(function(){
 
-		
-		var yolo = new app(fakeAjax(global),fakeSocket());	
-	  
-	});
+	var app = new App(window);	
 
-})(window || this);
+    app.withGames(FakeAjaxGame(), FakeSocketGame)
+       .withBear(FakeAjaxBear(), FakeSocketBear)
+       .start();
+  
+});
+
+

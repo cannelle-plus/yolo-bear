@@ -1,5 +1,23 @@
 var ajax = function(){
 
+
+	var _getCurrentBear = function(){
+		return $.ajax({
+    	    type: "GET",
+      		url: "api/bear/profile",
+      		contentType: 'application/json'
+		});
+	};
+
+	var _signIn = function(cmd){
+		return $.ajax({
+	      type: "POST",
+	      url: "/api/bear/signIn",	
+	      data: JSON.stringify(cmd),
+	      contentType: 'application/json'
+		});
+	};
+
 	var _getGamesList = function(){
 		return $.ajax({
     	    type: "GET",
@@ -35,7 +53,7 @@ var ajax = function(){
 		});
 	};
 
-	var _createGame = function(cmd){
+	var _ScheduleGame = function(cmd){
 		return $.ajax({
 	      type: "POST",
 	      url: "/api/game/schedule",
@@ -49,7 +67,9 @@ var ajax = function(){
 		joinGame : _joinGame,
 		abandonGame : _abandonGame,
 		cancelGame : _cancelGame,
-		createGame : _createGame
+		ScheduleGame : _ScheduleGame,
+		getCurrentBear : _getCurrentBear,
+		signIn : _signIn
 	};
 };
 

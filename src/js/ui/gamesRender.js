@@ -1,5 +1,6 @@
 var doT = require('dot');
 var logger = require('../logger');
+var to = require('../reactiveSources/to');
 
 var gamesRenderer = function(global, reactive)
 {
@@ -9,7 +10,6 @@ var gamesRenderer = function(global, reactive)
 	
 	var $ = window.jQuery;
 	var _publish = reactive.publish;
-	var to = reactive.to;
 	var _observable = reactive.observable;
 
 	var gameTemplate = doT.template(document.getElementById('gamesListTemplate').innerHTML);
@@ -45,7 +45,7 @@ var gamesRenderer = function(global, reactive)
 			$game.find('.nbPlayers').html(game.nbPlayers);
 			$game.find('.action').hide();
 
-			_publish('uiGameUpdated', { 'id' : $id });	
+			_publish('uiPlayerAddedToGame', { 'id' : $id });	
 		}
 	}; 
 
@@ -59,7 +59,7 @@ var gamesRenderer = function(global, reactive)
 			$game.find('.action').hide();
 			if(reason) renderActionError(reason);
 
-			_publish('uiGameUpdated', { 'id' : $id });	
+			_publish('uiPlayerRemovedFromGame', { 'id' : $id });	
 		}
 	};
 
@@ -73,7 +73,7 @@ var gamesRenderer = function(global, reactive)
 			$game.find('.nbPlayers').html(game.nbPlayers);
 			$game.find('.action').hide();
 
-			_publish('uiGameUpdated', { 'id' : $id });	
+			_publish('uiGameAbandonned', { 'id' : $id });	
 		}
 	}; 
 
@@ -87,7 +87,7 @@ var gamesRenderer = function(global, reactive)
 			$game.find('.action').hide();
 			renderActionError(reason);
 
-			_publish('uiGameUpdated', { 'id' : $id });	
+			_publish('uiGameNotAbandonned', { 'id' : $id });	
 		}
 	}; 
 
@@ -106,7 +106,7 @@ var gamesRenderer = function(global, reactive)
 		// 		nbPlayers = _nbPlayers;
 		// 		maxPlayers = _maxPlayers;
 	 	//      }
-		_publish('uiGameUpdated', { 'id' : $id });	
+		_publish('uiGameDetailled', { 'id' : $id });	
 	};
 
 	

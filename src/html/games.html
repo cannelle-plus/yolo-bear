@@ -22,13 +22,11 @@
 		<h1><a href="#" data-modal="open">Bear2Bear</a></h1>
 	</header>
 	<div id="main">
-		<!--<section id="createAccount">
+		<section id="signIn">
 			<h2 class="title">Create account</h2>
 			<form action="#" method="post" enctype="application/x-www-form-urlencoded">
-				<input type="text" id="nickname" name="text" placeholder="Nickname *">
-				<input type="text" id="email" name="email" placeholder="Email *">
-				<input type="password" id="pwd" name="pwd" placeholder="Password *">
-				<input type="password" id="pwd2" name="pwd2" placeholder="Confirm password *">
+				<input type="text" id="bearUsername" name="text" placeholder="bear name *">
+				<input type="text" id="bearAvatarId" name="text" placeholder="bear avatar *">
 				<div class="checkbox">
 					<input type="checkbox">
 					<p>J'accepte les <a href="#" data-target="cgu">conditions générales d'utilisation</a></p>
@@ -40,7 +38,7 @@
 					<p><a href="#" data-target="mentions">Mentions légales</a></p>
 				</footer>
 			</form>
-		</section>-->
+		</section>
 		<section id="games">
 			<script id="gamesListTemplate" type="text/x-dot-template">
 				<li id="id{{=it.id}}"> 
@@ -145,10 +143,11 @@
 		</ul>
 	</div>
 </body>	
-<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script  src="js/doT.min.js" type="text/javascript"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="js/yolo-bear.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
 <script>
   
   
