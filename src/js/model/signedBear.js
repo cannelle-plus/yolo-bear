@@ -5,9 +5,8 @@ var SignedBear = function(bearId,bearUsername){
 	var _bearId = bearId;
 	var _bearUsername = bearUsername;
 	
-	this.createCommand = function(cmd){
-		return "";
-	};
+	this.bearId = _bearId;
+	this.bearUsername = _bearUsername;
 	
 };
 

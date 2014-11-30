@@ -45,19 +45,19 @@ var gamesViewModel = function(window, reactive,  ajax, socket, currentBear){
 
 	this.Join= function(id){
 		logger.debug('viewmodel : joinGame ' + id);
-		_games.joinGame(id,currentBear.username);
+		_games.joinGame(id,currentBear.bearUsername);
 		_games.publish();
 	};
 
 	this.Abandon= function(id){
 		logger.debug('viewmodel : abandonGame ' + id);
-		_games.abandonGame(id,currentBear.username);
+		_games.abandonGame(id,currentBear.bearUsername);
 		_games.publish();	
 	};
 
 	this.Schedule = function(name,location, date, nbPlayers){
 		logger.debug('viewmodel : scheduleGame ' + name);
-		_games.scheduleGame( currentBear.username,currentBear.userId, name,location,date, nbPlayers);
+		_games.scheduleGame( currentBear.bearUsername,currentBear.bearId, name,location,date, nbPlayers);
 		_games.publish();
 	};
 
