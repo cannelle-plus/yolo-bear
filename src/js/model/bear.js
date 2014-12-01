@@ -1,11 +1,12 @@
 
 
-var bear = function(pubsub, bearId,bearUsername, socialId, avatarId, hasSignedIn){
+var bear = function(pubsub, bearId, tokenId, bearUsername, socialId, avatarId, hasSignedIn){
 
 	var _evtsUncommitted = [];
 	var _pubsub = pubsub;
 
 	var _bearId = bearId;
+	var _tokenId = tokenId;
 	var _bearUsername = bearUsername;
 	var _socialId = socialId;
 	var _avatarId = avatarId;
@@ -39,6 +40,7 @@ var bear = function(pubsub, bearId,bearUsername, socialId, avatarId, hasSignedIn
 
 		_apply('hasSignedIn', {
 	      	"bearId" : _bearId, 
+	      	"tokenId" : _tokenId,
 			"bearUsername" : _bearUsername, 
 			'socialId' : _socialId, 
 			'avatarId' : _avatarId
@@ -48,6 +50,7 @@ var bear = function(pubsub, bearId,bearUsername, socialId, avatarId, hasSignedIn
 	if (_hasSignedIn)  
 		_apply ('signedIn',  {
 				"bearId" : _bearId, 
+				"tokenId" : _tokenId,
 				"bearUsername" : _bearUsername, 
 				'socialId' : _socialId, 
 				'avatarId' : _avatarId

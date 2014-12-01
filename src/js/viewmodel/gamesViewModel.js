@@ -4,7 +4,7 @@ var to = require('../reactiveSources/to');
 // var uuid = require('node-uuid');
 
 var GamesRender = require("../ui/gamesRender.js");
-var Repository = require("../reactiveSources/repository");
+var GameRepository = require("../reactiveSources/gameRepository");
 
 
 var gamesViewModel = function(window, reactive,  ajax, socket, currentBear){
@@ -30,7 +30,7 @@ var gamesViewModel = function(window, reactive,  ajax, socket, currentBear){
 
 		
 
-	var repository = new Repository(reactive, ajax, socket);	
+	var repository = new GameRepository(reactive, ajax, socket);	
 	var gamesRender = new GamesRender(window, reactive);
 	var _games = new Games(_publish);
 	var $ = window.jQuery;

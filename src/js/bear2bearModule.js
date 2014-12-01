@@ -15,9 +15,15 @@ var bear2bearModule = function(aggType, ViewModel) {
 
 		this.addToWindow = function(window, currentBear) {
 			var ajax = new Ajax(window);
-			var socket = new Socket(reactiveModule);
 
-			return new ViewModel(window, reactiveModule, ajax, socket, currentBear);
+			if (currentBear) {
+				var socket = new Socket(reactiveModule, currentBear);
+				return new ViewModel(window, reactiveModule, ajax, socket, currentBear);
+			}
+			else {
+				return new ViewModel(window, reactiveModule, ajax);
+			}
+
 		};
 	};
 

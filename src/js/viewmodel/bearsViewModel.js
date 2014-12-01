@@ -4,10 +4,10 @@ var Bear = require('../model/bear');
 // var uuid = require('node-uuid');
 
 var BearsRender = require("../ui/bearsRender.js");
-var Repository = require("../reactiveSources/repository");
+var BearRepository = require("../reactiveSources/bearRepository");
 
 
-var bearsViewModel = function(window, reactive, ajax, socket){
+var bearsViewModel = function(window, reactive, ajax){
 
 	if (!window)
 		throw "window is not instanciated";
@@ -18,14 +18,10 @@ var bearsViewModel = function(window, reactive, ajax, socket){
 	if (!ajax)
 		throw "ajax is not instanciated";
 
-	if (!socket)
-		throw "socket is not instanciated";
-
-	
 	var _publish = reactive.publish;
 	var _observable = reactive.observable;
 
-	var repository = new Repository(reactive, ajax, socket);	
+	var repository = new BearRepository(reactive, ajax);	
 	var bearsRender = new BearsRender(window, reactive);
 	var _bear = null;
 	var $ = window.jQuery;
@@ -69,7 +65,7 @@ var bearsViewModel = function(window, reactive, ajax, socket){
 	//-------------------------------------------------	
 	_observable('serverCurrentBearReceived').subscribe(to(function (evt){
 		var x = evt.payLoad;
-		_bear = new Bear(_publish, x.bearId, x.bearUsername, x.socialId, x.avatarId, x.hasSignedIn);
+		_bear = new Bear(_publish, x.bearId, x.tokenId, x.bearUsername, x.socialId, x.avatarId, x.hasSignedIn);
 		_bear.publish();
     }));
 

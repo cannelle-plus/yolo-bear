@@ -4,7 +4,7 @@ var uuid = require('node-uuid');
 var to = require('./to');
 
 
-var repository = function(reactive, ajax, socket) 
+var gameRepository = function(reactive, ajax, socket) 
 {
 	if (!reactive)
 		throw "reactive is not instanciated";
@@ -46,36 +46,9 @@ var repository = function(reactive, ajax, socket)
 				'username' : username,
 				'reason' : reason
 			});
-		},
-
-		CurrentBearReceived : function(bearId, bearUsername, socialId, avatarId, hasSignedIn){
-			logger.debug(bearId + ' ' + bearUsername);
-			reactive.publish("serverCurrentBearReceived", {
-				'bearId' : bearId,
-				'bearUsername' : bearUsername,
-				'socialId' : socialId,
-				'avatarId' : avatarId,
-				'hasSignedIn' : hasSignedIn
-			});
-		},
-
-		
+		}
 	} ;
 	
-	var _getCurrentBear = function(){
-		return ajax.getCurrentBear().then(function(data) {
-			logger.debug('resolving current Bear' + data);
-
-			publish.CurrentBearReceived(
-					data.bearId,
-					data.bearUsername,
-					data.socialId,
-					data.avatarId,
-					data.hasSignedIn);
-		});
-		//what to do if it fails, should we handle it , event to be Scheduled , name to be found? 
-	};
-
 	var _getGamesList = function(){
 		return ajax.getGamesList().then(function(data) {
 			logger.debug('resolving getGamesList' + data);
@@ -114,11 +87,6 @@ var repository = function(reactive, ajax, socket)
 	var _scheduleGame = function(cmd){
 		ajax.ScheduleGame(cmd);
 	};
-
-	var _signIn = function(cmd){
-		ajax.signIn(cmd);	
-	};
-
 
 	// { Id: '6b766657-05f0-4eea-f92d-22ac305e24c2',
 	//   Version: 0,
@@ -172,12 +140,11 @@ var repository = function(reactive, ajax, socket)
 	_observable('gameAbandonned').subscribe(to(_abandonGame));
 	_observable('gameScheduled').subscribe(to(_scheduleGame));
 	_observable('gameCancelled').subscribe(to(_cancelGame));
-	_observable('hasSignedIn').subscribe(to(_signIn));
+
 
 	return {
 		getGamesList : _getGamesList,
-		getCurrentBear : _getCurrentBear
 	};
 };
 
-module.exports = repository;
+module.exports = gameRepository;

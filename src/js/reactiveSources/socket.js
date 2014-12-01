@@ -1,10 +1,10 @@
-var Session = require("../session");
 
-var Socket = function(reactive) {
+
+var Socket = function(reactive, currentBear) {
 
 	var _socket = io.connect('http://localhost:8888');
 
-	_socket.emit('login', Session.current());
+	_socket.emit('login', currentBear.tokenId );
 
 	this.subscribeTo = function(channel, action) {
 		_socket.on(channel, action);

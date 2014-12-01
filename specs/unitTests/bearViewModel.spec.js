@@ -17,6 +17,7 @@ describe("Given that  nothing hapenned before,", function() {
 
   	var bear= { 
 			bearId : '4a82199e-7c30-4a66-b194-6d40127fbb89',
+      userId: '12345678-34567-67',
       bearUsername : "jason",
 			socialId : '24567789',
 			avatarId : 23,

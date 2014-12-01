@@ -18,16 +18,16 @@ var app = function(window) {
 	var _ajaxGame , _socketGame ,__ajaxBear, _socketBear;
 
 
-	this.withGames = function(ajax, socket) {
-		_ajaxGame = ajax;
-		_socketGame = socket;
+	this.withGames = function(Ajax, Socket) {
+		_AjaxGame = Ajax;
+		_SocketGame = Socket;
 
 		return _self;
 	};
 
-	this.withBear = function(ajax, socket) {
-		_ajaxBear = ajax;
-		_socketBear = socket;
+	this.withBear = function(Ajax, Socket) {
+		_AjaxBear = Ajax;
+		_SocketBear = Socket;
 
 		return _self;
 	};
@@ -38,8 +38,8 @@ var app = function(window) {
 		var GameModule = bear2bearModule("game", GamesViewModel);
 
 		//creating module
-		var _bearModule = new BearModule(_ajaxBear, _socketBear);
-		var _gameModule = new GameModule(_ajaxGame, _socketGame);
+		var _bearModule = new BearModule(_AjaxBear);
+		var _gameModule = new GameModule(_AjaxGame, _SocketGame);
 		
 		//start the bear vm
 		var _bearVm = _bearModule.addToWindow(window);
@@ -47,7 +47,7 @@ var app = function(window) {
 		_bearModule.observable(['signedIn', 'hasSignedIn'])
 			.subscribe(to(function(evt) {
 				
-				_currentBear = new SignedBear( evt.bearId,evt.bearUsername);
+				_currentBear = new SignedBear( evt.bearId, evt.tokenId, evt.bearUsername);
 
 				//starting the other vms
 				var _gameVm = _gameModule.addToWindow(window, _currentBear);

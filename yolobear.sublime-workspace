@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"_",
-				"_currentBear"
+				"bear",
+				"bearRepository"
 			],
 			[
-				"bear",
-				"bear2bearModule"
+				"_bear",
+				"_bearId"
+			],
+			[
+				"_",
+				"_currentBear"
 			],
 			[
 				"_soc",
@@ -30,10 +34,6 @@
 			[
 				"get",
 				"getGames"
-			],
-			[
-				"_bear",
-				"_bearUsername"
 			],
 			[
 				"a",
@@ -183,14 +183,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 612,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -264,28 +256,34 @@
 	},
 	"file_history":
 	[
-		"/D/projects/yolo-bear/specs/unitTests/bearViewModel.spec.js",
-		"/D/projects/yolo-bear/specs/helper/fakeAjaxBear.helper.js",
-		"/D/projects/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
-		"/D/projects/yolo-bear/src/js/bear2bearModule.js",
-		"/D/projects/yolo-bear/src/js/yoloBear.js",
-		"/D/projects/yolo-bear/src/js/app.js",
-		"/D/projects/yolo-bear/specs/helper/fakeAjaxGame.helper.js",
+		"/D/projects/yolo-bear/dist/socket.io/socket.io.js",
+		"/D/projects/yolo-bear/src/js/viewmodel/gamesViewModel.js",
 		"/D/projects/yolo-bear/src/js/viewmodel/bearsViewModel.js",
-		"/D/projects/yolo-bear/Gruntfile.js",
-		"/D/projects/yolo-bear/www-root/js/app.js",
+		"/D/projects/yolo-bear/src/html/home.html",
+		"/D/projects/yolo-bear/src/html/games.html",
+		"/D/projects/yolo-bear/src/js/reactiveSources/socket.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/bearRepository.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/gameRepository.js",
+		"/D/projects/yolo-bear/specs/helper/fakeAjaxBear.helper.js",
+		"/D/projects/yolo-bear/specs/unitTests/bearViewModel.spec.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/repository.js",
 		"/D/projects/yolo-bear/src/js/model/bear.js",
 		"/D/projects/yolo-bear/src/js/model/signedBear.js",
+		"/D/projects/yolo-bear/src/js/bear2bearModule.js",
+		"/D/projects/yolo-bear/src/js/app.js",
+		"/D/projects/yolo-bear/.gitignore",
+		"/D/projects/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
+		"/D/projects/yolo-bear/src/js/yoloBear.js",
+		"/D/projects/yolo-bear/specs/helper/fakeAjaxGame.helper.js",
+		"/D/projects/yolo-bear/Gruntfile.js",
+		"/D/projects/yolo-bear/www-root/js/app.js",
 		"/D/projects/yolo-bear/src/js/reactiveSources/ajax.js",
 		"/D/projects/yolo-bear/src/js/session.js",
-		"/D/projects/yolo-bear/src/js/viewmodel/gamesViewModel.js",
-		"/D/projects/yolo-bear/src/html/games.html",
 		"/D/projects/yolo-bear/www-root/games.html",
 		"/D/projects/yolo-bear/specs/unitTests/calljsDom.js",
 		"/D/projects/yolo-bear/src/js/reactiveSources/reactive.js",
 		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/D/projects/yolo-bear/src/js/massiveBear.js",
-		"/D/projects/yolo-bear/src/js/reactiveSources/repository.js",
 		"/D/projects/yolo-bear/src/js/model/game.js",
 		"/D/projects/yolo-bear/specs/unitTests/sequence.js",
 		"/D/projects/yolo-bear/src/js/ui/gamesRender.js",
@@ -300,12 +298,10 @@
 		"/D/projects/yolo-bear/specs/helper/fakeAjax.helper.js",
 		"/D/projects/yolo-bear/specs/sss.spec.js",
 		"/D/projects/yolo-bear/specs/unitTests/app.spec.js",
-		"/D/projects/yolo-bear/src/js/reactiveSources/socket.js",
 		"/D/projects/yolo-bear/specs/helper/fakeSocket.helper.js",
 		"/D/projects/yolo-bear/src/jsTap/fakeAjax.js",
 		"/D/projects/yolo-bear/src/html/signin.html",
 		"/D/projects/db-wookie/.gitignore",
-		"/D/projects/yolo-bear/src/html/home.html",
 		"/home/yoann/bearToBear/yolo-bear/src/html/games.html",
 		"/home/yoann/bearToBear/yolo-bear/src/js/reactiveSources/ajax.js",
 		"/home/yoann/bearToBear/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
@@ -404,6 +400,36 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Repository",
+			"repository",
+			"GameRepository",
+			"Repository",
+			"BearRepository",
+			"Repository",
+			"bearRepository",
+			"repository",
+			"gameRepository",
+			"_signIn",
+			"bearRepository",
+			"userId",
+			"currentBear",
+			"_ajaxBear",
+			"_AjaxBear",
+			"_ajaxBear",
+			"socket",
+			"tok",
+			"tokenId",
+			"_tokenId",
+			"tokenId",
+			"userId",
+			"bearId",
+			"bearUname",
+			"bearUsername",
+			"currentBear.userId",
+			"bearId",
+			"currentBear.username",
+			"bearUname",
+			"currentBear",
 			"global",
 			"bear2bearModule",
 			"BearsViewModel",
@@ -501,37 +527,7 @@
 			"signedIn",
 			"serverCurrentBearReceived",
 			"notSignedIn",
-			"serverGameAdded",
-			"whenCount",
-			"serverCurrentBearReceived",
-			"uiPlayerRemovedFromGame",
-			"uiGameDetailled",
-			"uiPlayerAddedToGame",
-			"uiPlayerRemovedFromGame",
-			"gameNotJoined",
-			"uiPlayerAddedToGame",
-			"gameNotJoined",
-			"gameAbandonned",
-			"uiPlayerAddedToGame",
-			"gameNotJoined",
-			"gameJoined",
-			"gameScheduled",
-			"uiGameScheduled",
-			"gameAdded",
-			"gameScheduled",
-			"uiGameUpdated",
-			"uiGameDetailled",
-			"uiPlayerAddedToGame",
-			"gamesListContainer",
-			"uiGameUpdated",
-			"action",
-			"renderPlayerAddedToGame",
-			"uiGameUpdated",
-			"gameScheduled",
-			"gameAbandonned",
-			"uiGameUpdated",
-			"gameAbandonned",
-			"gameJoined"
+			"serverGameAdded"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -554,139 +550,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": ".gitignore",
-					"settings":
-					{
-						"buffer_size": 612,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								47,
-								47
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -745,7 +610,7 @@
 		[
 			[
 				"",
-				"/D/projects/yolo-bear/yolobear.sublime-project"
+				"/D/projects/massive-bear/massive-bear.sublime-project"
 			]
 		],
 		"width": 380.0
