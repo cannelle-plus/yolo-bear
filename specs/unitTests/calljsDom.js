@@ -1,6 +1,7 @@
 
 var Reactive = require('../../src/js/reactiveSources/reactive');
 var logger = require('../../src/js/logger');
+var Navigation = require('../../src/js/ui/navigation');
 var jsdom = require('jsdom');
 var fs     = require('fs');
 var jQuery = require('jquery');
@@ -20,7 +21,9 @@ var calljsDom = function(description, fileName, callback)
 	    var window = document.parentWindow;
 	    window.$ = window.jQuery = jQuery(window) ;
 
-	    callback(done, window);
+	    var navigation = new Navigation(window.jQuery);
+
+	    callback(done, window, navigation);
 
 	});
 

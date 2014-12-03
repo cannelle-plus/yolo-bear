@@ -1,9 +1,15 @@
-var navigation = function(){
+var navigation = function($){
 
 	function doNothing(event){
 		event.preventDefault();
 		event.stopPropagation();
 	}
+
+	this.showSection = function(destination){
+		var id = '#' + destination,
+				tX = -100 * $(id).index();
+		$('#main > section').css('transform','translateX( ' + tX + '%)');
+	};
 	
 	// var urlParts = window.location.href.split('/'),
 	// 		currentPage = urlParts[urlParts.length - 1];
@@ -11,9 +17,8 @@ var navigation = function(){
 	// Navigation
 	$('body').on('click','[data-target]',function(e){
 		doNothing(e);
-		var id = '#' + $(this).attr('data-target'),
-				tX = -100 * $(id).index();
-		$('#main > section').css('transform','translateX( ' + tX + '%)');
+		this.showSection($(this).attr('data-target'));
+		
 		
 		// if($(this).attr('data-target') !== currentPage) {
 		// 	currentPage = $(this).attr('data-target');

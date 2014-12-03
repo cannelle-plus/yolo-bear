@@ -13,7 +13,7 @@ var BearModule = bear2bearModule("bear", BearsViewModel);
 
 describe("Given that  nothing hapenned before,", function() {
 
-  calljsDom("When we create a bear view model, then we receive a current bear received event from the server ", "games.html", function(done, window) {
+  calljsDom("When we create a bear view model, then we receive a current bear received event from the server ", "games.html", function(done, window, navigation) {
 
   	var bear= { 
 			bearId : '4a82199e-7c30-4a66-b194-6d40127fbb89',
@@ -28,7 +28,7 @@ describe("Given that  nothing hapenned before,", function() {
 
     new Sequence(module, done).then('serverCurrentBearReceived');
 
-    module.addToWindow(window);
+    module.addToWindow(window, navigation);
 
 
   });
@@ -37,7 +37,7 @@ describe("Given that  nothing hapenned before,", function() {
 
 describe("Given that we have a bear view model,", function() {
 
-  calljsDom("when  we have a current bear who has not yet signedIn, then we receive a notSignedIn event ", "games.html", function(done, window) {
+  calljsDom("when  we have a current bear who has not yet signedIn, then we receive a notSignedIn event ", "games.html", function(done, window, navigation) {
 
     var bear= { 
       bearId : '4a82199e-7c30-4a66-b194-6d40127fbb89',
@@ -51,7 +51,7 @@ describe("Given that we have a bear view model,", function() {
 
     new Sequence(module, done).then('notSignedIn');
 
-    module.addToWindow(window);
+    module.addToWindow(window, navigation);
 
 
   });
@@ -61,7 +61,7 @@ describe("Given that we have a bear view model,", function() {
 
 describe("Given that we have a bear view model,", function() {
 
-  calljsDom("when  we have a current bear who has signedIn, then we receive a SignedIn event ", "games.html", function(done, window) {
+  calljsDom("when  we have a current bear who has signedIn, then we receive a SignedIn event ", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var bear= { 
@@ -76,7 +76,7 @@ describe("Given that we have a bear view model,", function() {
 
     new Sequence(module, done).then('signedIn');
 
-    module.addToWindow(window);
+    module.addToWindow(window, navigation);
 
 
   });
@@ -85,7 +85,7 @@ describe("Given that we have a bear view model,", function() {
 
 describe("Given that we have a bear view model,", function() {
 
-  calljsDom("when  we receive a signed in bear, then we receive a uiBearRenderer event ", "games.html", function(done, window) {
+  calljsDom("when  we receive a signed in bear, then we receive a uiBearRenderer event ", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var bear= { 
@@ -100,7 +100,7 @@ describe("Given that we have a bear view model,", function() {
 
     new Sequence(module, done).then('uiBearRenderer');
 
-    module.addToWindow(window);
+    module.addToWindow(window, navigation);
 
   });
 
@@ -108,7 +108,7 @@ describe("Given that we have a bear view model,", function() {
 
 describe("Given that we have a bear view model,", function() {
 
-  calljsDom("when  we receive a not signed in bear, then we receive a uiSigninRendered event ", "games.html", function(done, window) {
+  calljsDom("when  we receive a not signed in bear, then we receive a uiSigninRendered event ", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var bear= { 
@@ -126,7 +126,7 @@ describe("Given that we have a bear view model,", function() {
         done();
       }));
 
-    module.addToWindow(window);
+    module.addToWindow(window, navigation);
 
   });
 
@@ -136,7 +136,7 @@ describe("Given that we have a bear view model,", function() {
 
 describe("Given that we have a bear view model with a not signed in bear,", function() {
 
-  calljsDom("when  we sign in, then we receive a hasSignedIn event", "games.html", function(done, window) {
+  calljsDom("when  we sign in, then we receive a hasSignedIn event", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var bear= { 
@@ -149,7 +149,7 @@ describe("Given that we have a bear view model with a not signed in bear,", func
 
     var module = new BearModule(ajax([bear]), socket());
 
-    var vm = module.addToWindow(window);
+    var vm = module.addToWindow(window, navigation);
 
     new Sequence(module, done)
         .when('serverCurrentBearReceived', function(x) {

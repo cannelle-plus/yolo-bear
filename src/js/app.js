@@ -3,7 +3,7 @@ var GamesViewModel = require("./viewmodel/gamesViewModel");
 var BearsViewModel = require("./viewmodel/bearsViewModel");
 var to = require('./reactiveSources/to');
 
-var navigation = require('./ui/navigation');
+var Navigation = require('./ui/navigation');
 var Session = require("./session");
 var bear2bearModule = require("./bear2bearModule");
 var logger = require('./logger');
@@ -13,7 +13,7 @@ var app = function(window) {
 	var _self= this;
 	var _currentBear;
 
-	navigation();
+	var navigation = new Navigation(window.jQuery);
 
 	var _ajaxGame , _socketGame ,__ajaxBear, _socketBear;
 
@@ -42,7 +42,7 @@ var app = function(window) {
 		var _gameModule = new GameModule(_AjaxGame, _SocketGame);
 		
 		//start the bear vm
-		var _bearVm = _bearModule.addToWindow(window);
+		var _bearVm = _bearModule.addToWindow(window,navigation);
 
 		_bearModule.observable(['signedIn', 'hasSignedIn'])
 			.subscribe(to(function(evt) {
@@ -50,7 +50,7 @@ var app = function(window) {
 				_currentBear = new SignedBear( evt.bearId, evt.tokenId, evt.bearUsername);
 
 				//starting the other vms
-				var _gameVm = _gameModule.addToWindow(window, _currentBear);
+				var _gameVm = _gameModule.addToWindow(window,navigation, _currentBear);
 				_gameVm.getGames();
 			}));
 	};

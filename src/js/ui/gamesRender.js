@@ -2,7 +2,7 @@ var doT = require('dot');
 var logger = require('../logger');
 var to = require('../reactiveSources/to');
 
-var gamesRenderer = function(global, reactive)
+var gamesRenderer = function(global, reactive , navigation)
 {
 	var window = global;
 	var document= window.document;
@@ -20,6 +20,10 @@ var gamesRenderer = function(global, reactive)
 	var renderActionError  = function(error) {
 		$(document.getElementById('textError')).text(error); 
 	};  
+
+	var renderGames  = function() {
+
+	};
 
 	var renderGameAdded  = function(gameAdded) {
 		var htmlRendered = gameTemplate(gameAdded.payLoad);

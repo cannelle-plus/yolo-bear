@@ -13,15 +13,15 @@ var bear2bearModule = function(aggType, ViewModel) {
 			reactiveModule.publish(evtType, data);
 		};
 
-		this.addToWindow = function(window, currentBear) {
+		this.addToWindow = function(window, navigation, currentBear) {
 			var ajax = new Ajax(window);
 
 			if (currentBear) {
 				var socket = new Socket(reactiveModule, currentBear);
-				return new ViewModel(window, reactiveModule, ajax, socket, currentBear);
+				return new ViewModel(window,navigation, reactiveModule, ajax, socket, currentBear);
 			}
 			else {
-				return new ViewModel(window, reactiveModule, ajax);
+				return new ViewModel(window, navigation, reactiveModule, ajax);
 			}
 
 		};

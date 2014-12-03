@@ -7,7 +7,7 @@ var BearsRender = require("../ui/bearsRender.js");
 var BearRepository = require("../reactiveSources/bearRepository");
 
 
-var bearsViewModel = function(window, reactive, ajax){
+var bearsViewModel = function(window, navigation, reactive, ajax){
 
 	if (!window)
 		throw "window is not instanciated";
@@ -22,7 +22,7 @@ var bearsViewModel = function(window, reactive, ajax){
 	var _observable = reactive.observable;
 
 	var repository = new BearRepository(reactive, ajax);	
-	var bearsRender = new BearsRender(window, reactive);
+	var bearsRender = new BearsRender(window, reactive, navigation);
 	var _bear = null;
 	var $ = window.jQuery;
 

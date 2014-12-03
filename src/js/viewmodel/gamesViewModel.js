@@ -7,7 +7,7 @@ var GamesRender = require("../ui/gamesRender.js");
 var GameRepository = require("../reactiveSources/gameRepository");
 
 
-var gamesViewModel = function(window, reactive,  ajax, socket, currentBear){
+var gamesViewModel = function(window,navigation, reactive,  ajax, socket, currentBear){
 
 	if (!window)
 		throw "window is not instanciated";
@@ -31,7 +31,7 @@ var gamesViewModel = function(window, reactive,  ajax, socket, currentBear){
 		
 
 	var repository = new GameRepository(reactive, ajax, socket);	
-	var gamesRender = new GamesRender(window, reactive);
+	var gamesRender = new GamesRender(window, reactive, navigation);
 	var _games = new Games(_publish);
 	var $ = window.jQuery;
 

@@ -17,40 +17,40 @@ var currentBear = new SignedBear( "12","yoann");
 
 describe("Given that  nothing happenned before,", function() {
 
-  calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then we receive two events from the server", "games.html", function(done, window) {
+  calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then we receive two events from the server", "games.html", function(done, window, navigation) {
 
     var module = new GameModule(ajax(), socket());
 
    new Sequence(module, done)
         .whenCount('serverGameAdded', 2, done);
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
   });
 
-  calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then we have two gameAdded events", "games.html", function(done, window) {
+  calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then we have two gameAdded events", "games.html", function(done, window, navigation) {
 
     var module = new GameModule(ajax(), socket());
 
     new Sequence(module, done)
         .whenCount('gameAdded', 2, done);
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
   });
 
-  calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then these events produce in turn uiGame events after rendering html", "games.html", function(done, window) {
+  calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then these events produce in turn uiGame events after rendering html", "games.html", function(done, window, navigation) {
 
     var module = new GameModule(ajax(), socket());
 
     new Sequence(module, done)
         .whenCount('uiGameAdded', 2, done);
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -60,13 +60,13 @@ describe("Given that  nothing happenned before,", function() {
 
 describe("when joining a game", function() {
 
-  calljsDom("we join the game", "games.html", function(done, window) {
+  calljsDom("we join the game", "games.html", function(done, window, navigation) {
 
     // logger.setLevel("DEBUG");
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -78,11 +78,11 @@ describe("when joining a game", function() {
 
   });
 
-  calljsDom("we have an ui transormation", "games.html", function(done, window) {
+  calljsDom("we have an ui transormation", "games.html", function(done, window, navigation) {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -99,11 +99,11 @@ describe("when joining a game", function() {
 describe("Given we have joined a game , when abandonning a game ", function() {
 
 
-  calljsDom("we abandon the game", "games.html", function(done, window) {
+  calljsDom("we abandon the game", "games.html", function(done, window, navigation) {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -118,11 +118,11 @@ describe("Given we have joined a game , when abandonning a game ", function() {
 
   });
 
-  calljsDom("we have an ui transormation", "games.html", function(done, window) {
+  calljsDom("we have an ui transormation", "games.html", function(done, window, navigation) {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -142,7 +142,7 @@ describe("Given we have joined a game , when abandonning a game ", function() {
 describe("when scheduling a game", function() {
 
 
-  calljsDom("we schedule the game", "games.html", function(done, window) {
+  calljsDom("we schedule the game", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
 
@@ -154,7 +154,7 @@ describe("when scheduling a game", function() {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -164,7 +164,7 @@ describe("when scheduling a game", function() {
 
   });
 
-  calljsDom("we have an ui transormation", "games.html", function(done, window) {
+  calljsDom("we have an ui transormation", "games.html", function(done, window, navigation) {
 
     //we wait for the viewModel to have been completed with new games, before joining one of them
     var name = 'test';
@@ -174,7 +174,7 @@ describe("when scheduling a game", function() {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -188,7 +188,7 @@ describe("when scheduling a game", function() {
 
 describe("Given that we scheduled a game", function() {
 
-  calljsDom("when we join the game,  then the game  is not joined", "games.html", function(done, window) {
+  calljsDom("when we join the game,  then the game  is not joined", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
         
@@ -199,7 +199,7 @@ describe("Given that we scheduled a game", function() {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -215,7 +215,7 @@ describe("Given that we scheduled a game", function() {
 
 
 
-  calljsDom("whe can abandon this game", "games.html", function(done, window) {
+  calljsDom("whe can abandon this game", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var name = 'test';
@@ -225,7 +225,7 @@ describe("Given that we scheduled a game", function() {
 
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -243,12 +243,12 @@ describe("Given that we scheduled a game", function() {
 
 describe("Given that we joined a scheduled game", function() {
 
-  calljsDom("when we join the game anew,  then the game  is not joined", "games.html", function(done, window) {
+  calljsDom("when we join the game anew,  then the game  is not joined", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -267,12 +267,12 @@ describe("Given that we joined a scheduled game", function() {
 
 describe("Given that we  have two games,", function() {
 
-  calljsDom("when a new game is received through the socket,  then the game  is added", "games.html", function(done, window) {
+  calljsDom("when a new game is received through the socket,  then the game  is added", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -288,12 +288,12 @@ describe("Given that we  have two games,", function() {
 
 describe("Given that we  have two games,", function() {
 
-  calljsDom("when a new player joins the game through the socket,  then the ui is updated", "games.html", function(done, window) {
+  calljsDom("when a new player joins the game through the socket,  then the ui is updated", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -309,12 +309,12 @@ describe("Given that we  have two games,", function() {
 
 describe("Given that we  have two games,", function() {
 
-  calljsDom("when a  player abandons the game through the socket,  then the ui is updated", "games.html", function(done, window) {
+  calljsDom("when a  player abandons the game through the socket,  then the ui is updated", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 
@@ -334,12 +334,12 @@ describe("Given that we  have two games,", function() {
 
 describe("Given that we  have two games,", function() {
 
-  calljsDom("when we ask for the detail of the first one,  then the ui is updated", "games.html", function(done, window) {
+  calljsDom("when we ask for the detail of the first one,  then the ui is updated", "games.html", function(done, window, navigation) {
 
     // logger.setLevel('DEBUG');
     var module = new GameModule(ajax(), socket());
 
-    var vm = module.addToWindow(window, currentBear);
+    var vm = module.addToWindow(window, navigation, currentBear);
 
     vm.getGames();
 

@@ -2,7 +2,7 @@ var doT = require('dot');
 var logger = require('../logger');
 var to = require('../reactiveSources/to');
 
-var BearsRenderer = function(global, reactive)
+var BearsRenderer = function(global, reactive, navigation)
 {
 	var window = global;
 	var document= window.document;
@@ -16,6 +16,8 @@ var BearsRenderer = function(global, reactive)
 	// render html and modify the DOM
 	//-------------------------------------------------
 	var renderBear  = function(evt) {
+
+		navigation.showSection('games');
 		//render avatar username etc..
 		// var $id = 'id'+ evt.payLoad.bearId;
 		// var reason = evt.payLoad.reason;
@@ -33,6 +35,8 @@ var BearsRenderer = function(global, reactive)
 	}; 
 
 	var renderSignIn  = function(evt) {
+
+		navigation.showSection('signIn');
 		// var $id = 'id'+ evt.payLoad.bearId;
 		// var reason = evt.payLoad.reason;
 		// var $game = $(document.getElementById($id)); 
@@ -78,44 +82,35 @@ var BearsRenderer = function(global, reactive)
 	// 	$('#gamesListContainer').on('click','[data-target=gameDetail]',fromEventDo(action));
 	// };
 
-	// this.Schedule = function(action)
-	// {
-	// 	$('#btnScheduleGame').on('click',function(e){
+	this.Schedule = function(action)
+	{
+		$('#btnSignin').on('click',function(e){
 
-	// 		// event.preventDefault();
-	// 		// event.stopPropagation();
-	// 		var error = [];
+			event.preventDefault();
+			event.stopPropagation();
+			var error = [];
 
-	// 		var gameDate = null;
-	// 		var gameName = $(document.getElementById('gameName')).val();
-	// 		var gameLocation = $(document.getElementById('gameLocation')).val();
-	// 		var date = $(document.getElementById('gameDate')).val();
-	// 		var hour = $(document.getElementById('gameHour')).val();
-	// 		var gameNbPlayers = document.getElementById('nbPlayersRequired').value;
+			var gameDate = null;
+			var bearUsername = $(document.getElementById('bearUsername')).val();
+			var bearAvatarId = $(document.getElementById('bearAvatarId')).val();
+			
 
-	// 		if(date.length===0 || hour.length===0)
-	// 			error.push("Date cannot be null !");
+			// if(date.length===0 || hour.length===0)
+			// 	error.push("Date cannot be null !");
 
-	// 		if(gameName.length===0)
-	// 			error.push("Game's name cannot be null !");
+			// if(gameName.length===0)
+			// 	error.push("Game's name cannot be null !");
 
-	// 		if(gameLocation.length===0) 
-	// 			error.push("Game's location cannot be null !");
+			// if(gameLocation.length===0) 
+			// 	error.push("Game's location cannot be null !");
 
-	// 		if(isNaN(gameNbPlayers))
-	// 			error.push("Game's players cannot be null !");
+			// if(isNaN(gameNbPlayers))
+			// 	error.push("Game's players cannot be null !");
 
-	// 		gameDate = date +' '+hour;
+			action( bearUsername, bearAvatarId);
 
-	// 		if (error.length>0) {
-	// 			for(var i=0;i<error.length;i++)  alert(error[i]);
-	// 			return;
-	// 		}
-
-	// 		action( gameName,gameLocation,gameDate,gameNbPlayers);
-
-	// 	}); 
-	// };
+		}); 
+	};
  
  	//-------------------------------------------------
  	// general ui functions
