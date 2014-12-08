@@ -55,7 +55,7 @@ var BearsRenderer = function(global, reactive, navigation)
 	//-------------------------------------------------
 	// listens to pubsub events to perform UI rendering
 	//-------------------------------------------------
-	_observable('signedIn').subscribe(to(renderBear));
+	_observable(['signedIn', 'hasSignedIn']).subscribe(to(renderBear));
 	_observable('notSignedIn').subscribe(to(renderSignIn));
 
 	//-------------------------------------------------
@@ -82,7 +82,7 @@ var BearsRenderer = function(global, reactive, navigation)
 	// 	$('#gamesListContainer').on('click','[data-target=gameDetail]',fromEventDo(action));
 	// };
 
-	this.Schedule = function(action)
+	this.SignIn = function(action)
 	{
 		$('#btnSignin').on('click',function(e){
 

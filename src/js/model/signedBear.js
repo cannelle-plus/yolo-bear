@@ -9,6 +9,10 @@ var SignedBear = function(bearId, tokenId, bearUsername){
 	this.bearId = _bearId;
 	this.tokenId = _tokenId;
 	this.bearUsername = _bearUsername;
+
+	this.loginSocket = function(socket){
+		socket.emit('login', _tokenId );
+	};
 	
 };
 

@@ -17,7 +17,7 @@ var bearRepository = function(reactive, ajax)
 
 	var publish = {
 		CurrentBearReceived : function(bearId, tokenId, bearUsername, socialId, avatarId, hasSignedIn){
-			logger.debug(bearId + ' ' + bearUsername);
+			logger.debug('CurrentBearReceived' + bearId + ' ' + bearUsername + ' ' + tokenId);
 			reactive.publish("serverCurrentBearReceived", {
 				'bearId' : bearId,
 				'tokenId' : tokenId,
@@ -36,12 +36,12 @@ var bearRepository = function(reactive, ajax)
 			logger.debug('resolving current Bear' + data);
 
 			publish.CurrentBearReceived(
-					data.bearId,
-					data.userId,
-					data.bearUsername,
-					data.socialId,
-					data.avatarId,
-					data.hasSignedIn);
+					data.bear.bearId,
+					data.bear.userId,
+					data.bear.bearUsername,
+					data.bear.socialId,
+					data.bear.avatarId,
+					data.bear.hasSignedIn);
 		});
 		//what to do if it fails, should we handle it , event to be Scheduled , name to be found? 
 	};

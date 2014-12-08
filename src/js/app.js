@@ -47,7 +47,7 @@ var app = function(window) {
 		_bearModule.observable(['signedIn', 'hasSignedIn'])
 			.subscribe(to(function(evt) {
 				
-				_currentBear = new SignedBear( evt.bearId, evt.tokenId, evt.bearUsername);
+				_currentBear = new SignedBear( evt.payLoad.bearId, evt.payLoad.tokenId, evt.payLoad.bearUsername);
 
 				//starting the other vms
 				var _gameVm = _gameModule.addToWindow(window,navigation, _currentBear);

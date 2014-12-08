@@ -26,10 +26,10 @@ var bearsViewModel = function(window, navigation, reactive, ajax){
 	var _bear = null;
 	var $ = window.jQuery;
 
-	// //-------------------------------------------------
-	// //perform actions on the domain and publish events
-	// //-------------------------------------------------
-	this.signIn= function(bearName, bearAvatarId){
+	//-------------------------------------------------
+	//perform actions on the domain and publish events
+	//-------------------------------------------------
+	this.SignIn= function(bearName, bearAvatarId){
 		if (!_bear)
 			throw "bear cannot be null";
 		
@@ -37,28 +37,11 @@ var bearsViewModel = function(window, navigation, reactive, ajax){
 		_bear.publish();	
 	};
 
-	// this.Abandon= function(id){
-	// 	_games.abandonGame(id,session.username);
-	// 	_games.publish();	
-	// };
+	//-------------------------------------------------
+	//subscribing to UI events  to trigger domain actions
+	//-------------------------------------------------
+	bearsRender.SignIn(this.SignIn);
 
-	// this.Schedule = function(name,location, date, nbPlayers){
-	// 	_games.scheduleGame( session.username,session.userId, name,location,date, nbPlayers);
-	// 	_games.publish();
-	// };
-
-	// this.ViewDetail = function(id) {
-	// 	_games.viewDetail(id);
-	// 	_games.publish();
-	// };
-
-	// //-------------------------------------------------
-	// //subscribing to UI events  to trigger domain actions
-	// //-------------------------------------------------
-	// gamesRender.Join(this.Join);
-	// gamesRender.Abandon(this.Abandon);
-	// gamesRender.Schedule(this.Schedule);
-	// gamesRender.ViewDetail(this.ViewDetail);
 
 	//-------------------------------------------------
 	// listenning to domain events to perform action on the domain
@@ -68,16 +51,6 @@ var bearsViewModel = function(window, navigation, reactive, ajax){
 		_bear = new Bear(_publish, x.bearId, x.tokenId, x.bearUsername, x.socialId, x.avatarId, x.hasSignedIn);
 		_bear.publish();
     }));
-
- //    _observable('serverPlayerAddedToGame').subscribe(to(function (x){
-	// 	_games.addPlayerToGame(x.payLoad.id, x.payLoad.username);	
-	// 	_games.publish();
- //    }));
-
- //    _observable('serverPlayerRemovedFromGame').subscribe(to(function (x){
-	// 	_games.removePlayerFromGame(x.payLoad.id, x.payLoad.username, x.payLoad.reason);	
-	// 	_games.publish();
- //    }));
 
 
     //-------------------------------------------------

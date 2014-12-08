@@ -15,7 +15,7 @@ var GameModule = bear2bearModule("game", GamesViewModel);
 var currentBear = new SignedBear( "12","yoann");
 
 
-describe("Given that  nothing happenned before,", function() {
+describe("Given that  nothing happened before,", function() {
 
   calljsDom("When we initialize a gamesViewModel with the fakeAjax server, then we receive two events from the server", "games.html", function(done, window, navigation) {
 

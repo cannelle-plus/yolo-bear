@@ -10,24 +10,6 @@ var fakeAjaxGame = function(gameDataSource){
 		var document= window.document;
 		var $ = window.jQuery;
 
-		var _getBear = function(){
-			var bear= { 
-				bearId : '4a82199e-7c30-4a66-b194-6d40127fbb89',
-				socialId : '24567789',
-				avatarId : 23,
-				hasSignedIn : false
-			};
-			
-			var $deferred = $.Deferred();
-
-			setTimeout(function(){
-					$deferred.resolve(bear);
-				}, 50);
-			
-			return $deferred.promise();
-
-		};
-
 		var _getGamesList = function(){
 			var gamesList= { gamesList : [{
 					id : '4a82199e-7c30-4a95-b194-6d40127fbb89',
