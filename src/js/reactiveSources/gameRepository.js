@@ -62,7 +62,7 @@ var gameRepository = function(reactive, ajax, socket)
 						g.version,
 						g.startDate,
 						g.location,
-						g.players.split(","),
+						g.players.split(" "),
 						g.nbPlayers,
 						g.maxPlayers);
 		
