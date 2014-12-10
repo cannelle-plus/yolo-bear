@@ -1,4 +1,5 @@
 var navigation = function($){
+	var _self = this;
 
 	function doNothing(event){
 		event.preventDefault();
@@ -17,7 +18,7 @@ var navigation = function($){
 	// Navigation
 	$('body').on('click','[data-target]',function(e){
 		doNothing(e);
-		this.showSection($(this).attr('data-target'));
+		_self.showSection($(this).attr('data-target'));
 		
 		
 		// if($(this).attr('data-target') !== currentPage) {
